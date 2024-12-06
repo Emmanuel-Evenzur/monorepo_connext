@@ -15,6 +15,7 @@ export const mock = {
     logLevel: (process.env.LOG_LEVEL as any) || "silent",
     network: "testnet",
     environment: "production",
+    cartographerUrl: "http://cartographer.com",
     chains: {
       [mock.domain.A]: {
         assets: [mock.asset.A],
