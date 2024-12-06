@@ -18,6 +18,7 @@ describe("SdkUtils", () => {
   let config: ConfigFns.SdkConfig;
 
   beforeEach(async () => {
+    console.log(mockConfig.cartographerUrl);
     config = getEnvConfig(mockConfig, mockChainData, mockDeployments);
 
     stub(ConfigFns, "getConfig").resolves({ nxtpConfig: config, chainData: mockChainData });
@@ -177,7 +178,6 @@ describe("SdkUtils", () => {
 
       expect(res).to.not.be.undefined;
     });
-    
   });
 
   describe("getLatestAssetPrice", () => {
