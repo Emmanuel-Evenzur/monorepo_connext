@@ -1282,7 +1282,7 @@ jobs:
         id: apply
         working-directory: ./ops/testnet/prod/core
         run: |
-          terraform apply -var-file=tfvars.json -auto-approve > /dev/null 2>&1
+          terraform apply -var-file=tfvars.json -auto-approve
 
     outputs:
       sequencer-server-tags: ${{ needs.e2e-tests.outputs.sequencer-server-tags }}
