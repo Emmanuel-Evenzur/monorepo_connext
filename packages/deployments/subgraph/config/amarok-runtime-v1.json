@@ -169,7 +169,7 @@
   },
   {
     "subgraphName": "connext/amarok-runtime-v1-xlayer",
-    "network": "x1",
+    "network": "xlayer",
     "source": [
       {
         "name": "Connext",
