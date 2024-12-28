@@ -14,6 +14,7 @@
     "deploy:testnet:amarok-runtime-v0": "yarn deploy amarok-runtime amarok-runtime-v0 'goerli,optimism-goerli,mumbai'",
     "deploy:amarok-runtime-v0": "yarn deploy amarok-runtime amarok-runtime-v0 all",
     "deploy:amarok-runtime-v1": "yarn deploy amarok-runtime amarok-runtime-v1 all",
+    "deploy:amarok-runtime-v1:xlayer": "yarn deploy amarok-runtime amarok-runtime-v1 x1",
     "deploy:testnet:amarok-runtime-v1": "yarn deploy amarok-runtime amarok-runtime-v1 'sepolia,optimism-sepolia,arbitrum-sepolia'",
     "deploy:amarok-runtime-staging": "yarn deploy amarok-runtime-staging amarok-runtime-staging all",
     "deploy:amarok-hub-staging": "yarn deploy amarok-hub-staging amarok-hub-staging all",
