@@ -84,6 +84,8 @@ export function getChainId(): BigInt {
     chainId = BigInt.fromI32(534352);
   } else if (network == "xlayer") {
     chainId = BigInt.fromI32(196);
+  } else if (network == "x1") {
+    chainId = BigInt.fromI32(196);
   } else {
     throw new Error(`No chainName for network ${network}`);
   }
