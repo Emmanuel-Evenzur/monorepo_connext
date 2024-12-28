@@ -621,12 +621,12 @@ sources:
             }
           value: "_meta.block.number"
         sources:
+          - endpoint: "https://api.goldsky.com/api/public/project_clssc64y57n5r010yeoly05up/subgraphs/connext/amarok-runtime-v1-xlayer/gn"
+            retry: 5
+            timeout: 30000 # 30 seconds
           - endpoint: "https://connext.bwarelabs.com/subgraphs/name/connext/amarok-runtime-v1-xlayer"
             retry: 5
             timeout: 30000 # 30 seconds
-          # - endpoint: "https://api.goldsky.com/api/public/project_clssc64y57n5r010yeoly05up/subgraphs/connext/amarok-runtime-v1-xlayer/gn"
-          #   retry: 5
-          #   timeout: 30000 # 30 seconds
     transforms:
       - prefix:
           value: xlayer_
