@@ -120,7 +120,7 @@ locals {
         providers = ["https://base-mainnet.blastapi.io/${var.blast_key}"],
         disabledAssets = [
           "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
-          "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+          "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
         ]
       }
       "1635148152" = {

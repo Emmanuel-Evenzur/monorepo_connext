@@ -148,7 +148,7 @@ export const MAINNET_PRODUCTION_INIT_CONFIG: InitConfig = {
         "1650553709": {
           // base
           local: "0x1ede59e0d39B14c038698B1036BDE9a4819C86D4",
-          adopted: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+          adopted: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
         },
       },
     },
