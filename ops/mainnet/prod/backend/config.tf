@@ -40,7 +40,8 @@ locals {
           "0x1cEB5cB57C4D4E2b2433641b95Dd330A33185A44",
           "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
           "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-          "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+          "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+          "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
         ]
       }
       "1869640809" = {
@@ -52,7 +53,8 @@ locals {
           "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
           "0xF0EB88B8C83347092ef321Ae5D1D54C88Ee89219",
           "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
-          "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58"
+          "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+          "0x4200000000000000000000000000000000000006"
         ]
       }
       "1886350457" = {
@@ -63,7 +65,8 @@ locals {
           "0x4a2bE2075588BcE6A7E072574698a7DbbAc39b08",
           "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
           "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-          "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
+          "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+          "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619"
         ]
       }
       "1634886255" = {
@@ -75,7 +78,8 @@ locals {
           "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
           "0xF0EB88B8C83347092ef321Ae5D1D54C88Ee89219",
           "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
-          "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+          "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+          "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
         ]
       }
       "6450786" = {
@@ -87,7 +91,8 @@ locals {
           "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
           "0xF0EB88B8C83347092ef321Ae5D1D54C88Ee89219",
           "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
-          "0x55d398326f99059fF775485246999027B3197955"
+          "0x55d398326f99059fF775485246999027B3197955",
+          "0x2170Ed0880ac9A755fd29B2688956BD959F933F8"
         ]
       }
       "6778479" = {
@@ -100,7 +105,8 @@ locals {
           "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
           "0x8b988A5E3c1C7F5230102606eaEFE421e2CD9A10",
           "0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83",
-          "0x4ECaBa5870353805a9F068101A40E0f32ed605C6"
+          "0x4ECaBa5870353805a9F068101A40E0f32ed605C6",
+          "0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1"
         ]
       }
       "1818848877" = {
@@ -110,7 +116,8 @@ locals {
           "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
           "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
           "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-          "0xA219439258ca9da29E9Cc4cE5596924745e12B93"
+          "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+          "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f"
         ]
       }
       "1887071085" = {
@@ -120,7 +127,8 @@ locals {
         providers = ["https://base-mainnet.blastapi.io/${var.blast_key}"],
         disabledAssets = [
           "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
-          "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+          "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "0x4200000000000000000000000000000000000006"
         ]
       }
       "1635148152" = {
@@ -130,7 +138,8 @@ locals {
         providers = ["https://metis-mainnet.blastapi.io/${var.blast_key}"],
         disabledAssets = [
           "0xEA32A96608495e54156Ae48931A7c20f0dcc1a21",
-          "0xbB06DCA3AE6887fAbF931640f67cab3e3a16F4dC"
+          "0xbB06DCA3AE6887fAbF931640f67cab3e3a16F4dC",
+          "0x420000000000000000000000000000000000000a"
         ]
       }
       "1835101812" = {
@@ -138,7 +147,10 @@ locals {
       }
       "1836016741" = {
         providers = ["https://mode-mainnet.blastapi.io/${var.blast_key}", "https://mainnet.mode.network/"]
-      }    
+        disabledAssets = [
+          "0x4200000000000000000000000000000000000006"
+        ]
+      }
     }
 
     # The following are defined in variables.tf and don't map to the
