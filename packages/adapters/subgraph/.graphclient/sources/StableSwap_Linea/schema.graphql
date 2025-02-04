@@ -12,6 +12,11 @@ directive @subgraphId(id: String!) on OBJECT
 "creates a virtual field on the entity that may be queried but cannot be set manually through the mappings API."
 directive @derivedFrom(field: String!) on FIELD_DEFINITION
 
+enum linea_swap_Aggregation_interval {
+  hour
+  day
+}
+
 scalar linea_swap_BigDecimal
 
 scalar BigInt
@@ -27,6 +32,12 @@ input linea_swap_Block_height {
 }
 
 scalar linea_swap_Bytes
+
+"""
+8 bytes signed integer
+
+"""
+scalar linea_swap_Int8
 
 type linea_swap_LpAccount {
   id: ID!
@@ -121,18 +132,32 @@ input linea_swap_LpAccountBalance_filter {
   modified_not_in: [BigInt!]
   transaction: linea_swap_Bytes
   transaction_not: linea_swap_Bytes
+  transaction_gt: linea_swap_Bytes
+  transaction_lt: linea_swap_Bytes
+  transaction_gte: linea_swap_Bytes
+  transaction_lte: linea_swap_Bytes
   transaction_in: [linea_swap_Bytes!]
   transaction_not_in: [linea_swap_Bytes!]
   transaction_contains: linea_swap_Bytes
   transaction_not_contains: linea_swap_Bytes
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_LpAccountBalance_filter]
+  or: [linea_swap_LpAccountBalance_filter]
 }
 
 enum linea_swap_LpAccountBalance_orderBy {
   id
   account
+  account__id
+  account__address
   token
+  token__id
+  token__address
+  token__decimals
+  token__name
+  token__symbol
+  token__totalSupply
   amount
   block
   modified
@@ -150,6 +175,10 @@ input linea_swap_LpAccount_filter {
   id_not_in: [ID!]
   address: linea_swap_Bytes
   address_not: linea_swap_Bytes
+  address_gt: linea_swap_Bytes
+  address_lt: linea_swap_Bytes
+  address_gte: linea_swap_Bytes
+  address_lte: linea_swap_Bytes
   address_in: [linea_swap_Bytes!]
   address_not_in: [linea_swap_Bytes!]
   address_contains: linea_swap_Bytes
@@ -157,6 +186,8 @@ input linea_swap_LpAccount_filter {
   balances_: linea_swap_LpAccountBalance_filter
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_LpAccount_filter]
+  or: [linea_swap_LpAccount_filter]
 }
 
 enum linea_swap_LpAccount_orderBy {
@@ -242,6 +273,10 @@ input linea_swap_LpTokenEvent_filter {
   timestamp_not_in: [BigInt!]
   transaction: linea_swap_Bytes
   transaction_not: linea_swap_Bytes
+  transaction_gt: linea_swap_Bytes
+  transaction_lt: linea_swap_Bytes
+  transaction_gte: linea_swap_Bytes
+  transaction_lte: linea_swap_Bytes
   transaction_in: [linea_swap_Bytes!]
   transaction_not_in: [linea_swap_Bytes!]
   transaction_contains: linea_swap_Bytes
@@ -256,11 +291,19 @@ input linea_swap_LpTokenEvent_filter {
   nonce_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_LpTokenEvent_filter]
+  or: [linea_swap_LpTokenEvent_filter]
 }
 
 enum linea_swap_LpTokenEvent_orderBy {
   id
   token
+  token__id
+  token__address
+  token__decimals
+  token__name
+  token__symbol
+  token__totalSupply
   amount
   block
   timestamp
@@ -279,6 +322,10 @@ input linea_swap_LpToken_filter {
   id_not_in: [ID!]
   address: linea_swap_Bytes
   address_not: linea_swap_Bytes
+  address_gt: linea_swap_Bytes
+  address_lt: linea_swap_Bytes
+  address_gte: linea_swap_Bytes
+  address_lte: linea_swap_Bytes
   address_in: [linea_swap_Bytes!]
   address_not_in: [linea_swap_Bytes!]
   address_contains: linea_swap_Bytes
@@ -360,14 +407,33 @@ input linea_swap_LpToken_filter {
   totalSupply_lte: linea_swap_BigDecimal
   totalSupply_in: [linea_swap_BigDecimal!]
   totalSupply_not_in: [linea_swap_BigDecimal!]
+  events_: linea_swap_LpTokenEvent_filter
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_LpToken_filter]
+  or: [linea_swap_LpToken_filter]
 }
 
 enum linea_swap_LpToken_orderBy {
   id
   address
   stableSwap
+  stableSwap__id
+  stableSwap__isActive
+  stableSwap__key
+  stableSwap__canonicalId
+  stableSwap__domain
+  stableSwap__swapPool
+  stableSwap__lpToken
+  stableSwap__initialA
+  stableSwap__futureA
+  stableSwap__initialATime
+  stableSwap__futureATime
+  stableSwap__swapFee
+  stableSwap__adminFee
+  stableSwap__virtualPrice
+  stableSwap__invariant
+  stableSwap__lpTokenSupply
   decimals
   name
   symbol
@@ -429,12 +495,20 @@ input linea_swap_LpTransferEvent_filter {
   amount_not_in: [linea_swap_BigDecimal!]
   from: linea_swap_Bytes
   from_not: linea_swap_Bytes
+  from_gt: linea_swap_Bytes
+  from_lt: linea_swap_Bytes
+  from_gte: linea_swap_Bytes
+  from_lte: linea_swap_Bytes
   from_in: [linea_swap_Bytes!]
   from_not_in: [linea_swap_Bytes!]
   from_contains: linea_swap_Bytes
   from_not_contains: linea_swap_Bytes
   to: linea_swap_Bytes
   to_not: linea_swap_Bytes
+  to_gt: linea_swap_Bytes
+  to_lt: linea_swap_Bytes
+  to_gte: linea_swap_Bytes
+  to_lte: linea_swap_Bytes
   to_in: [linea_swap_Bytes!]
   to_not_in: [linea_swap_Bytes!]
   to_contains: linea_swap_Bytes
@@ -473,6 +547,10 @@ input linea_swap_LpTransferEvent_filter {
   timestamp_not_in: [BigInt!]
   transaction: linea_swap_Bytes
   transaction_not: linea_swap_Bytes
+  transaction_gt: linea_swap_Bytes
+  transaction_lt: linea_swap_Bytes
+  transaction_gte: linea_swap_Bytes
+  transaction_lte: linea_swap_Bytes
   transaction_in: [linea_swap_Bytes!]
   transaction_not_in: [linea_swap_Bytes!]
   transaction_contains: linea_swap_Bytes
@@ -487,11 +565,19 @@ input linea_swap_LpTransferEvent_filter {
   nonce_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_LpTransferEvent_filter]
+  or: [linea_swap_LpTransferEvent_filter]
 }
 
 enum linea_swap_LpTransferEvent_orderBy {
   id
   token
+  token__id
+  token__address
+  token__decimals
+  token__name
+  token__symbol
+  token__totalSupply
   amount
   from
   to
@@ -525,12 +611,18 @@ input linea_swap_PooledToken_filter {
   id_not_in: [ID!]
   asset: linea_swap_Bytes
   asset_not: linea_swap_Bytes
+  asset_gt: linea_swap_Bytes
+  asset_lt: linea_swap_Bytes
+  asset_gte: linea_swap_Bytes
+  asset_lte: linea_swap_Bytes
   asset_in: [linea_swap_Bytes!]
   asset_not_in: [linea_swap_Bytes!]
   asset_contains: linea_swap_Bytes
   asset_not_contains: linea_swap_Bytes
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_PooledToken_filter]
+  or: [linea_swap_PooledToken_filter]
 }
 
 enum linea_swap_PooledToken_orderBy {
@@ -1035,6 +1127,10 @@ input linea_swap_StableSwapAddLiquidityEvent_filter {
   stableSwap_: linea_swap_StableSwap_filter
   provider: linea_swap_Bytes
   provider_not: linea_swap_Bytes
+  provider_gt: linea_swap_Bytes
+  provider_lt: linea_swap_Bytes
+  provider_gte: linea_swap_Bytes
+  provider_lte: linea_swap_Bytes
   provider_in: [linea_swap_Bytes!]
   provider_not_in: [linea_swap_Bytes!]
   provider_contains: linea_swap_Bytes
@@ -1099,6 +1195,10 @@ input linea_swap_StableSwapAddLiquidityEvent_filter {
   timestamp_not_in: [BigInt!]
   transaction: linea_swap_Bytes
   transaction_not: linea_swap_Bytes
+  transaction_gt: linea_swap_Bytes
+  transaction_lt: linea_swap_Bytes
+  transaction_gte: linea_swap_Bytes
+  transaction_lte: linea_swap_Bytes
   transaction_in: [linea_swap_Bytes!]
   transaction_not_in: [linea_swap_Bytes!]
   transaction_contains: linea_swap_Bytes
@@ -1113,11 +1213,29 @@ input linea_swap_StableSwapAddLiquidityEvent_filter {
   nonce_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_StableSwapAddLiquidityEvent_filter]
+  or: [linea_swap_StableSwapAddLiquidityEvent_filter]
 }
 
 enum linea_swap_StableSwapAddLiquidityEvent_orderBy {
   id
   stableSwap
+  stableSwap__id
+  stableSwap__isActive
+  stableSwap__key
+  stableSwap__canonicalId
+  stableSwap__domain
+  stableSwap__swapPool
+  stableSwap__lpToken
+  stableSwap__initialA
+  stableSwap__futureA
+  stableSwap__initialATime
+  stableSwap__futureATime
+  stableSwap__swapFee
+  stableSwap__adminFee
+  stableSwap__virtualPrice
+  stableSwap__invariant
+  stableSwap__lpTokenSupply
   provider
   tokenAmounts
   fees
@@ -1188,6 +1306,10 @@ input linea_swap_StableSwapEvent_filter {
   timestamp_not_in: [BigInt!]
   transaction: linea_swap_Bytes
   transaction_not: linea_swap_Bytes
+  transaction_gt: linea_swap_Bytes
+  transaction_lt: linea_swap_Bytes
+  transaction_gte: linea_swap_Bytes
+  transaction_lte: linea_swap_Bytes
   transaction_in: [linea_swap_Bytes!]
   transaction_not_in: [linea_swap_Bytes!]
   transaction_contains: linea_swap_Bytes
@@ -1202,11 +1324,29 @@ input linea_swap_StableSwapEvent_filter {
   nonce_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_StableSwapEvent_filter]
+  or: [linea_swap_StableSwapEvent_filter]
 }
 
 enum linea_swap_StableSwapEvent_orderBy {
   id
   stableSwap
+  stableSwap__id
+  stableSwap__isActive
+  stableSwap__key
+  stableSwap__canonicalId
+  stableSwap__domain
+  stableSwap__swapPool
+  stableSwap__lpToken
+  stableSwap__initialA
+  stableSwap__futureA
+  stableSwap__initialATime
+  stableSwap__futureATime
+  stableSwap__swapFee
+  stableSwap__adminFee
+  stableSwap__virtualPrice
+  stableSwap__invariant
+  stableSwap__lpTokenSupply
   block
   timestamp
   transaction
@@ -1261,6 +1401,10 @@ input linea_swap_StableSwapExchange_filter {
   stableSwap_: linea_swap_StableSwap_filter
   buyer: linea_swap_Bytes
   buyer_not: linea_swap_Bytes
+  buyer_gt: linea_swap_Bytes
+  buyer_lt: linea_swap_Bytes
+  buyer_gte: linea_swap_Bytes
+  buyer_lte: linea_swap_Bytes
   buyer_in: [linea_swap_Bytes!]
   buyer_not_in: [linea_swap_Bytes!]
   buyer_contains: linea_swap_Bytes
@@ -1329,6 +1473,10 @@ input linea_swap_StableSwapExchange_filter {
   timestamp_not_in: [BigInt!]
   transaction: linea_swap_Bytes
   transaction_not: linea_swap_Bytes
+  transaction_gt: linea_swap_Bytes
+  transaction_lt: linea_swap_Bytes
+  transaction_gte: linea_swap_Bytes
+  transaction_lte: linea_swap_Bytes
   transaction_in: [linea_swap_Bytes!]
   transaction_not_in: [linea_swap_Bytes!]
   transaction_contains: linea_swap_Bytes
@@ -1343,11 +1491,29 @@ input linea_swap_StableSwapExchange_filter {
   nonce_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_StableSwapExchange_filter]
+  or: [linea_swap_StableSwapExchange_filter]
 }
 
 enum linea_swap_StableSwapExchange_orderBy {
   id
   stableSwap
+  stableSwap__id
+  stableSwap__isActive
+  stableSwap__key
+  stableSwap__canonicalId
+  stableSwap__domain
+  stableSwap__swapPool
+  stableSwap__lpToken
+  stableSwap__initialA
+  stableSwap__futureA
+  stableSwap__initialATime
+  stableSwap__futureATime
+  stableSwap__swapFee
+  stableSwap__adminFee
+  stableSwap__virtualPrice
+  stableSwap__invariant
+  stableSwap__lpTokenSupply
   buyer
   boughtId
   tokensBought
@@ -1409,6 +1575,10 @@ input linea_swap_StableSwapRemoveLiquidityEvent_filter {
   stableSwap_: linea_swap_StableSwap_filter
   provider: linea_swap_Bytes
   provider_not: linea_swap_Bytes
+  provider_gt: linea_swap_Bytes
+  provider_lt: linea_swap_Bytes
+  provider_gte: linea_swap_Bytes
+  provider_lte: linea_swap_Bytes
   provider_in: [linea_swap_Bytes!]
   provider_not_in: [linea_swap_Bytes!]
   provider_contains: linea_swap_Bytes
@@ -1473,6 +1643,10 @@ input linea_swap_StableSwapRemoveLiquidityEvent_filter {
   timestamp_not_in: [BigInt!]
   transaction: linea_swap_Bytes
   transaction_not: linea_swap_Bytes
+  transaction_gt: linea_swap_Bytes
+  transaction_lt: linea_swap_Bytes
+  transaction_gte: linea_swap_Bytes
+  transaction_lte: linea_swap_Bytes
   transaction_in: [linea_swap_Bytes!]
   transaction_not_in: [linea_swap_Bytes!]
   transaction_contains: linea_swap_Bytes
@@ -1487,11 +1661,29 @@ input linea_swap_StableSwapRemoveLiquidityEvent_filter {
   nonce_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_StableSwapRemoveLiquidityEvent_filter]
+  or: [linea_swap_StableSwapRemoveLiquidityEvent_filter]
 }
 
 enum linea_swap_StableSwapRemoveLiquidityEvent_orderBy {
   id
   stableSwap
+  stableSwap__id
+  stableSwap__isActive
+  stableSwap__key
+  stableSwap__canonicalId
+  stableSwap__domain
+  stableSwap__swapPool
+  stableSwap__lpToken
+  stableSwap__initialA
+  stableSwap__futureA
+  stableSwap__initialATime
+  stableSwap__futureATime
+  stableSwap__swapFee
+  stableSwap__adminFee
+  stableSwap__virtualPrice
+  stableSwap__invariant
+  stableSwap__lpTokenSupply
   provider
   tokenAmounts
   fees
@@ -1520,12 +1712,20 @@ input linea_swap_StableSwap_filter {
   isActive_not_in: [Boolean!]
   key: linea_swap_Bytes
   key_not: linea_swap_Bytes
+  key_gt: linea_swap_Bytes
+  key_lt: linea_swap_Bytes
+  key_gte: linea_swap_Bytes
+  key_lte: linea_swap_Bytes
   key_in: [linea_swap_Bytes!]
   key_not_in: [linea_swap_Bytes!]
   key_contains: linea_swap_Bytes
   key_not_contains: linea_swap_Bytes
   canonicalId: linea_swap_Bytes
   canonicalId_not: linea_swap_Bytes
+  canonicalId_gt: linea_swap_Bytes
+  canonicalId_lt: linea_swap_Bytes
+  canonicalId_gte: linea_swap_Bytes
+  canonicalId_lte: linea_swap_Bytes
   canonicalId_in: [linea_swap_Bytes!]
   canonicalId_not_in: [linea_swap_Bytes!]
   canonicalId_contains: linea_swap_Bytes
@@ -1540,12 +1740,20 @@ input linea_swap_StableSwap_filter {
   domain_not_in: [BigInt!]
   swapPool: linea_swap_Bytes
   swapPool_not: linea_swap_Bytes
+  swapPool_gt: linea_swap_Bytes
+  swapPool_lt: linea_swap_Bytes
+  swapPool_gte: linea_swap_Bytes
+  swapPool_lte: linea_swap_Bytes
   swapPool_in: [linea_swap_Bytes!]
   swapPool_not_in: [linea_swap_Bytes!]
   swapPool_contains: linea_swap_Bytes
   swapPool_not_contains: linea_swap_Bytes
   lpToken: linea_swap_Bytes
   lpToken_not: linea_swap_Bytes
+  lpToken_gt: linea_swap_Bytes
+  lpToken_lt: linea_swap_Bytes
+  lpToken_gte: linea_swap_Bytes
+  lpToken_lte: linea_swap_Bytes
   lpToken_in: [linea_swap_Bytes!]
   lpToken_not_in: [linea_swap_Bytes!]
   lpToken_contains: linea_swap_Bytes
@@ -1646,12 +1854,15 @@ input linea_swap_StableSwap_filter {
   lpTokenSupply_lte: BigInt
   lpTokenSupply_in: [BigInt!]
   lpTokenSupply_not_in: [BigInt!]
+  events_: linea_swap_StableSwapEvent_filter
   exchanges_: linea_swap_StableSwapExchange_filter
   hourlyVolumes_: linea_swap_SwapHourlyVolume_filter
   dailyVolumes_: linea_swap_SwapDailyVolume_filter
   weeklyVolumes_: linea_swap_SwapWeeklyVolume_filter
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_StableSwap_filter]
+  or: [linea_swap_StableSwap_filter]
 }
 
 enum linea_swap_StableSwap_orderBy {
@@ -2158,11 +2369,29 @@ input linea_swap_SwapDailyVolume_filter {
   volume_not_in: [linea_swap_BigDecimal!]
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_SwapDailyVolume_filter]
+  or: [linea_swap_SwapDailyVolume_filter]
 }
 
 enum linea_swap_SwapDailyVolume_orderBy {
   id
   stableSwap
+  stableSwap__id
+  stableSwap__isActive
+  stableSwap__key
+  stableSwap__canonicalId
+  stableSwap__domain
+  stableSwap__swapPool
+  stableSwap__lpToken
+  stableSwap__initialA
+  stableSwap__futureA
+  stableSwap__initialATime
+  stableSwap__futureATime
+  stableSwap__swapFee
+  stableSwap__adminFee
+  stableSwap__virtualPrice
+  stableSwap__invariant
+  stableSwap__lpTokenSupply
   timestamp
   volume
 }
@@ -2222,11 +2451,29 @@ input linea_swap_SwapHourlyVolume_filter {
   volume_not_in: [linea_swap_BigDecimal!]
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_SwapHourlyVolume_filter]
+  or: [linea_swap_SwapHourlyVolume_filter]
 }
 
 enum linea_swap_SwapHourlyVolume_orderBy {
   id
   stableSwap
+  stableSwap__id
+  stableSwap__isActive
+  stableSwap__key
+  stableSwap__canonicalId
+  stableSwap__domain
+  stableSwap__swapPool
+  stableSwap__lpToken
+  stableSwap__initialA
+  stableSwap__futureA
+  stableSwap__initialATime
+  stableSwap__futureATime
+  stableSwap__swapFee
+  stableSwap__adminFee
+  stableSwap__virtualPrice
+  stableSwap__invariant
+  stableSwap__lpTokenSupply
   timestamp
   volume
 }
@@ -2277,10 +2524,28 @@ input linea_swap_SwapTradeVolume_filter {
   volume_not_in: [linea_swap_BigDecimal!]
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_SwapTradeVolume_filter]
+  or: [linea_swap_SwapTradeVolume_filter]
 }
 
 enum linea_swap_SwapTradeVolume_orderBy {
   stableSwap
+  stableSwap__id
+  stableSwap__isActive
+  stableSwap__key
+  stableSwap__canonicalId
+  stableSwap__domain
+  stableSwap__swapPool
+  stableSwap__lpToken
+  stableSwap__initialA
+  stableSwap__futureA
+  stableSwap__initialATime
+  stableSwap__futureATime
+  stableSwap__swapFee
+  stableSwap__adminFee
+  stableSwap__virtualPrice
+  stableSwap__invariant
+  stableSwap__lpTokenSupply
   timestamp
   volume
 }
@@ -2340,11 +2605,29 @@ input linea_swap_SwapWeeklyVolume_filter {
   volume_not_in: [linea_swap_BigDecimal!]
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_SwapWeeklyVolume_filter]
+  or: [linea_swap_SwapWeeklyVolume_filter]
 }
 
 enum linea_swap_SwapWeeklyVolume_orderBy {
   id
   stableSwap
+  stableSwap__id
+  stableSwap__isActive
+  stableSwap__key
+  stableSwap__canonicalId
+  stableSwap__domain
+  stableSwap__swapPool
+  stableSwap__lpToken
+  stableSwap__initialA
+  stableSwap__futureA
+  stableSwap__initialATime
+  stableSwap__futureATime
+  stableSwap__swapFee
+  stableSwap__adminFee
+  stableSwap__virtualPrice
+  stableSwap__invariant
+  stableSwap__lpTokenSupply
   timestamp
   volume
 }
@@ -2382,6 +2665,8 @@ input linea_swap_SystemInfo_filter {
   swapCount_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_swap_BlockChangedFilter
+  and: [linea_swap_SystemInfo_filter]
+  or: [linea_swap_SystemInfo_filter]
 }
 
 enum linea_swap_SystemInfo_orderBy {
@@ -2390,6 +2675,12 @@ enum linea_swap_SystemInfo_orderBy {
   swapCount
 }
 
+"""
+A string representation of microseconds UNIX timestamp (16 digits)
+
+"""
+scalar Timestamp
+
 type linea_swap__Block_ {
   """The hash of the block"""
   hash: linea_swap_Bytes
@@ -2397,6 +2688,8 @@ type linea_swap__Block_ {
   number: Int!
   """Integer representation of the timestamp stored in blocks for the chain"""
   timestamp: Int
+  """The hash of the parent block"""
+  parentHash: linea_swap_Bytes
 }
 
 """The type for the top-level _meta field"""
