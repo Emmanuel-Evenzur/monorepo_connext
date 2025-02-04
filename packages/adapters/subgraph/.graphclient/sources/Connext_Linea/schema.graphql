@@ -39,6 +39,10 @@ input linea_AggregateRootProposed_filter {
   id_not_in: [ID!]
   aggregateRoot: linea_Bytes
   aggregateRoot_not: linea_Bytes
+  aggregateRoot_gt: linea_Bytes
+  aggregateRoot_lt: linea_Bytes
+  aggregateRoot_gte: linea_Bytes
+  aggregateRoot_lte: linea_Bytes
   aggregateRoot_in: [linea_Bytes!]
   aggregateRoot_not_in: [linea_Bytes!]
   aggregateRoot_contains: linea_Bytes
@@ -85,6 +89,8 @@ input linea_AggregateRootProposed_filter {
   blockNumber_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_AggregateRootProposed_filter]
+  or: [linea_AggregateRootProposed_filter]
 }
 
 enum linea_AggregateRootProposed_orderBy {
@@ -108,6 +114,10 @@ input linea_AggregateRoot_filter {
   id_not_in: [ID!]
   root: linea_Bytes
   root_not: linea_Bytes
+  root_gt: linea_Bytes
+  root_lt: linea_Bytes
+  root_gte: linea_Bytes
+  root_lte: linea_Bytes
   root_in: [linea_Bytes!]
   root_not_in: [linea_Bytes!]
   root_contains: linea_Bytes
@@ -122,12 +132,19 @@ input linea_AggregateRoot_filter {
   blockNumber_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_AggregateRoot_filter]
+  or: [linea_AggregateRoot_filter]
 }
 
 enum linea_AggregateRoot_orderBy {
   id
   root
   blockNumber
+}
+
+enum linea_Aggregation_interval {
+  hour
+  day
 }
 
 type linea_Asset {
@@ -247,6 +264,8 @@ input linea_AssetBalance_filter {
   feesEarned_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_AssetBalance_filter]
+  or: [linea_AssetBalance_filter]
 }
 
 enum linea_AssetBalance_orderBy {
@@ -256,7 +275,22 @@ enum linea_AssetBalance_orderBy {
   supplied
   removed
   router
+  router__id
+  router__isActive
+  router__owner
+  router__recipient
+  router__proposedOwner
+  router__proposedTimestamp
   asset
+  asset__id
+  asset__key
+  asset__decimal
+  asset__adoptedDecimal
+  asset__canonicalId
+  asset__canonicalDomain
+  asset__adoptedAsset
+  asset__localAsset
+  asset__blockNumber
   feesEarned
 }
 
@@ -280,6 +314,8 @@ input linea_AssetStatus_filter {
   status_not_in: [Boolean!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_AssetStatus_filter]
+  or: [linea_AssetStatus_filter]
 }
 
 enum linea_AssetStatus_orderBy {
@@ -298,6 +334,10 @@ input linea_Asset_filter {
   id_not_in: [ID!]
   key: linea_Bytes
   key_not: linea_Bytes
+  key_gt: linea_Bytes
+  key_lt: linea_Bytes
+  key_gte: linea_Bytes
+  key_lte: linea_Bytes
   key_in: [linea_Bytes!]
   key_not_in: [linea_Bytes!]
   key_contains: linea_Bytes
@@ -320,6 +360,10 @@ input linea_Asset_filter {
   adoptedDecimal_not_in: [BigInt!]
   canonicalId: linea_Bytes
   canonicalId_not: linea_Bytes
+  canonicalId_gt: linea_Bytes
+  canonicalId_lt: linea_Bytes
+  canonicalId_gte: linea_Bytes
+  canonicalId_lte: linea_Bytes
   canonicalId_in: [linea_Bytes!]
   canonicalId_not_in: [linea_Bytes!]
   canonicalId_contains: linea_Bytes
@@ -334,12 +378,20 @@ input linea_Asset_filter {
   canonicalDomain_not_in: [BigInt!]
   adoptedAsset: linea_Bytes
   adoptedAsset_not: linea_Bytes
+  adoptedAsset_gt: linea_Bytes
+  adoptedAsset_lt: linea_Bytes
+  adoptedAsset_gte: linea_Bytes
+  adoptedAsset_lte: linea_Bytes
   adoptedAsset_in: [linea_Bytes!]
   adoptedAsset_not_in: [linea_Bytes!]
   adoptedAsset_contains: linea_Bytes
   adoptedAsset_not_contains: linea_Bytes
   localAsset: linea_Bytes
   localAsset_not: linea_Bytes
+  localAsset_gt: linea_Bytes
+  localAsset_lt: linea_Bytes
+  localAsset_gte: linea_Bytes
+  localAsset_lte: linea_Bytes
   localAsset_in: [linea_Bytes!]
   localAsset_not_in: [linea_Bytes!]
   localAsset_contains: linea_Bytes
@@ -375,6 +427,8 @@ input linea_Asset_filter {
   status_: linea_AssetStatus_filter
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_Asset_filter]
+  or: [linea_Asset_filter]
 }
 
 enum linea_Asset_orderBy {
@@ -388,6 +442,8 @@ enum linea_Asset_orderBy {
   localAsset
   blockNumber
   status
+  status__id
+  status__status
 }
 
 scalar linea_BigDecimal
@@ -442,24 +498,38 @@ input linea_ConnectorMeta_filter {
   hubDomain_not_in: [BigInt!]
   amb: linea_Bytes
   amb_not: linea_Bytes
+  amb_gt: linea_Bytes
+  amb_lt: linea_Bytes
+  amb_gte: linea_Bytes
+  amb_lte: linea_Bytes
   amb_in: [linea_Bytes!]
   amb_not_in: [linea_Bytes!]
   amb_contains: linea_Bytes
   amb_not_contains: linea_Bytes
   rootManager: linea_Bytes
   rootManager_not: linea_Bytes
+  rootManager_gt: linea_Bytes
+  rootManager_lt: linea_Bytes
+  rootManager_gte: linea_Bytes
+  rootManager_lte: linea_Bytes
   rootManager_in: [linea_Bytes!]
   rootManager_not_in: [linea_Bytes!]
   rootManager_contains: linea_Bytes
   rootManager_not_contains: linea_Bytes
   mirrorConnector: linea_Bytes
   mirrorConnector_not: linea_Bytes
+  mirrorConnector_gt: linea_Bytes
+  mirrorConnector_lt: linea_Bytes
+  mirrorConnector_gte: linea_Bytes
+  mirrorConnector_lte: linea_Bytes
   mirrorConnector_in: [linea_Bytes!]
   mirrorConnector_not_in: [linea_Bytes!]
   mirrorConnector_contains: linea_Bytes
   mirrorConnector_not_contains: linea_Bytes
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_ConnectorMeta_filter]
+  or: [linea_ConnectorMeta_filter]
 }
 
 enum linea_ConnectorMeta_orderBy {
@@ -531,6 +601,10 @@ input linea_DestinationTransfer_filter {
   chainId_not_in: [BigInt!]
   transferId: linea_Bytes
   transferId_not: linea_Bytes
+  transferId_gt: linea_Bytes
+  transferId_lt: linea_Bytes
+  transferId_gte: linea_Bytes
+  transferId_lte: linea_Bytes
   transferId_in: [linea_Bytes!]
   transferId_not_in: [linea_Bytes!]
   transferId_contains: linea_Bytes
@@ -580,12 +654,20 @@ input linea_DestinationTransfer_filter {
   canonicalDomain_not_in: [BigInt!]
   to: linea_Bytes
   to_not: linea_Bytes
+  to_gt: linea_Bytes
+  to_lt: linea_Bytes
+  to_gte: linea_Bytes
+  to_lte: linea_Bytes
   to_in: [linea_Bytes!]
   to_not_in: [linea_Bytes!]
   to_contains: linea_Bytes
   to_not_contains: linea_Bytes
   delegate: linea_Bytes
   delegate_not: linea_Bytes
+  delegate_gt: linea_Bytes
+  delegate_lt: linea_Bytes
+  delegate_gte: linea_Bytes
+  delegate_lte: linea_Bytes
   delegate_in: [linea_Bytes!]
   delegate_not_in: [linea_Bytes!]
   delegate_contains: linea_Bytes
@@ -596,6 +678,10 @@ input linea_DestinationTransfer_filter {
   receiveLocal_not_in: [Boolean!]
   callData: linea_Bytes
   callData_not: linea_Bytes
+  callData_gt: linea_Bytes
+  callData_lt: linea_Bytes
+  callData_gte: linea_Bytes
+  callData_lte: linea_Bytes
   callData_in: [linea_Bytes!]
   callData_not_in: [linea_Bytes!]
   callData_contains: linea_Bytes
@@ -618,6 +704,10 @@ input linea_DestinationTransfer_filter {
   bumpSlippageCount_not_in: [BigInt!]
   originSender: linea_Bytes
   originSender_not: linea_Bytes
+  originSender_gt: linea_Bytes
+  originSender_lt: linea_Bytes
+  originSender_gte: linea_Bytes
+  originSender_lte: linea_Bytes
   originSender_in: [linea_Bytes!]
   originSender_not_in: [linea_Bytes!]
   originSender_contains: linea_Bytes
@@ -640,6 +730,10 @@ input linea_DestinationTransfer_filter {
   normalizedIn_not_in: [BigInt!]
   canonicalId: linea_Bytes
   canonicalId_not: linea_Bytes
+  canonicalId_gt: linea_Bytes
+  canonicalId_lt: linea_Bytes
+  canonicalId_gte: linea_Bytes
+  canonicalId_lte: linea_Bytes
   canonicalId_in: [linea_Bytes!]
   canonicalId_not_in: [linea_Bytes!]
   canonicalId_contains: linea_Bytes
@@ -683,12 +777,20 @@ input linea_DestinationTransfer_filter {
   routersFee_not_in: [BigInt!]
   executedCaller: linea_Bytes
   executedCaller_not: linea_Bytes
+  executedCaller_gt: linea_Bytes
+  executedCaller_lt: linea_Bytes
+  executedCaller_gte: linea_Bytes
+  executedCaller_lte: linea_Bytes
   executedCaller_in: [linea_Bytes!]
   executedCaller_not_in: [linea_Bytes!]
   executedCaller_contains: linea_Bytes
   executedCaller_not_contains: linea_Bytes
   executedTransactionHash: linea_Bytes
   executedTransactionHash_not: linea_Bytes
+  executedTransactionHash_gt: linea_Bytes
+  executedTransactionHash_lt: linea_Bytes
+  executedTransactionHash_gte: linea_Bytes
+  executedTransactionHash_lte: linea_Bytes
   executedTransactionHash_in: [linea_Bytes!]
   executedTransactionHash_not_in: [linea_Bytes!]
   executedTransactionHash_contains: linea_Bytes
@@ -727,6 +829,10 @@ input linea_DestinationTransfer_filter {
   executedBlockNumber_not_in: [BigInt!]
   executedTxOrigin: linea_Bytes
   executedTxOrigin_not: linea_Bytes
+  executedTxOrigin_gt: linea_Bytes
+  executedTxOrigin_lt: linea_Bytes
+  executedTxOrigin_gte: linea_Bytes
+  executedTxOrigin_lte: linea_Bytes
   executedTxOrigin_in: [linea_Bytes!]
   executedTxOrigin_not_in: [linea_Bytes!]
   executedTxOrigin_contains: linea_Bytes
@@ -741,12 +847,20 @@ input linea_DestinationTransfer_filter {
   executedTxNonce_not_in: [BigInt!]
   reconciledCaller: linea_Bytes
   reconciledCaller_not: linea_Bytes
+  reconciledCaller_gt: linea_Bytes
+  reconciledCaller_lt: linea_Bytes
+  reconciledCaller_gte: linea_Bytes
+  reconciledCaller_lte: linea_Bytes
   reconciledCaller_in: [linea_Bytes!]
   reconciledCaller_not_in: [linea_Bytes!]
   reconciledCaller_contains: linea_Bytes
   reconciledCaller_not_contains: linea_Bytes
   reconciledTransactionHash: linea_Bytes
   reconciledTransactionHash_not: linea_Bytes
+  reconciledTransactionHash_gt: linea_Bytes
+  reconciledTransactionHash_lt: linea_Bytes
+  reconciledTransactionHash_gte: linea_Bytes
+  reconciledTransactionHash_lte: linea_Bytes
   reconciledTransactionHash_in: [linea_Bytes!]
   reconciledTransactionHash_not_in: [linea_Bytes!]
   reconciledTransactionHash_contains: linea_Bytes
@@ -785,6 +899,10 @@ input linea_DestinationTransfer_filter {
   reconciledBlockNumber_not_in: [BigInt!]
   reconciledTxOrigin: linea_Bytes
   reconciledTxOrigin_not: linea_Bytes
+  reconciledTxOrigin_gt: linea_Bytes
+  reconciledTxOrigin_lt: linea_Bytes
+  reconciledTxOrigin_gte: linea_Bytes
+  reconciledTxOrigin_lte: linea_Bytes
   reconciledTxOrigin_in: [linea_Bytes!]
   reconciledTxOrigin_not_in: [linea_Bytes!]
   reconciledTxOrigin_contains: linea_Bytes
@@ -799,6 +917,8 @@ input linea_DestinationTransfer_filter {
   reconciledTxNonce_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_DestinationTransfer_filter]
+  or: [linea_DestinationTransfer_filter]
 }
 
 enum linea_DestinationTransfer_orderBy {
@@ -822,6 +942,15 @@ enum linea_DestinationTransfer_orderBy {
   normalizedIn
   canonicalId
   asset
+  asset__id
+  asset__key
+  asset__decimal
+  asset__adoptedDecimal
+  asset__canonicalId
+  asset__canonicalDomain
+  asset__adoptedAsset
+  asset__localAsset
+  asset__blockNumber
   amount
   routersFee
   executedCaller
@@ -842,6 +971,12 @@ enum linea_DestinationTransfer_orderBy {
   reconciledTxNonce
 }
 
+"""
+8 bytes signed integer
+
+"""
+scalar linea_Int8
+
 type linea_OptimisticRootFinalized {
   id: ID!
   aggregateRoot: linea_Bytes!
@@ -860,6 +995,10 @@ input linea_OptimisticRootFinalized_filter {
   id_not_in: [ID!]
   aggregateRoot: linea_Bytes
   aggregateRoot_not: linea_Bytes
+  aggregateRoot_gt: linea_Bytes
+  aggregateRoot_lt: linea_Bytes
+  aggregateRoot_gte: linea_Bytes
+  aggregateRoot_lte: linea_Bytes
   aggregateRoot_in: [linea_Bytes!]
   aggregateRoot_not_in: [linea_Bytes!]
   aggregateRoot_contains: linea_Bytes
@@ -882,6 +1021,8 @@ input linea_OptimisticRootFinalized_filter {
   blockNumber_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_OptimisticRootFinalized_filter]
+  or: [linea_OptimisticRootFinalized_filter]
 }
 
 enum linea_OptimisticRootFinalized_orderBy {
@@ -921,6 +1062,10 @@ input linea_OriginMessage_filter {
   id_not_in: [ID!]
   transferId: linea_Bytes
   transferId_not: linea_Bytes
+  transferId_gt: linea_Bytes
+  transferId_lt: linea_Bytes
+  transferId_gte: linea_Bytes
+  transferId_lte: linea_Bytes
   transferId_in: [linea_Bytes!]
   transferId_not_in: [linea_Bytes!]
   transferId_contains: linea_Bytes
@@ -935,6 +1080,10 @@ input linea_OriginMessage_filter {
   destinationDomain_not_in: [BigInt!]
   leaf: linea_Bytes
   leaf_not: linea_Bytes
+  leaf_gt: linea_Bytes
+  leaf_lt: linea_Bytes
+  leaf_gte: linea_Bytes
+  leaf_lte: linea_Bytes
   leaf_in: [linea_Bytes!]
   leaf_not_in: [linea_Bytes!]
   leaf_contains: linea_Bytes
@@ -949,18 +1098,30 @@ input linea_OriginMessage_filter {
   index_not_in: [BigInt!]
   message: linea_Bytes
   message_not: linea_Bytes
+  message_gt: linea_Bytes
+  message_lt: linea_Bytes
+  message_gte: linea_Bytes
+  message_lte: linea_Bytes
   message_in: [linea_Bytes!]
   message_not_in: [linea_Bytes!]
   message_contains: linea_Bytes
   message_not_contains: linea_Bytes
   root: linea_Bytes
   root_not: linea_Bytes
+  root_gt: linea_Bytes
+  root_lt: linea_Bytes
+  root_gte: linea_Bytes
+  root_lte: linea_Bytes
   root_in: [linea_Bytes!]
   root_not_in: [linea_Bytes!]
   root_contains: linea_Bytes
   root_not_contains: linea_Bytes
   transactionHash: linea_Bytes
   transactionHash_not: linea_Bytes
+  transactionHash_gt: linea_Bytes
+  transactionHash_lt: linea_Bytes
+  transactionHash_gte: linea_Bytes
+  transactionHash_lte: linea_Bytes
   transactionHash_in: [linea_Bytes!]
   transactionHash_not_in: [linea_Bytes!]
   transactionHash_contains: linea_Bytes
@@ -996,6 +1157,8 @@ input linea_OriginMessage_filter {
   rootCount_: linea_RootCount_filter
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_OriginMessage_filter]
+  or: [linea_OriginMessage_filter]
 }
 
 enum linea_OriginMessage_orderBy {
@@ -1009,6 +1172,8 @@ enum linea_OriginMessage_orderBy {
   transactionHash
   blockNumber
   rootCount
+  rootCount__id
+  rootCount__count
 }
 
 type linea_OriginTransfer {
@@ -1065,6 +1230,10 @@ input linea_OriginTransfer_filter {
   chainId_not_in: [BigInt!]
   transferId: linea_Bytes
   transferId_not: linea_Bytes
+  transferId_gt: linea_Bytes
+  transferId_lt: linea_Bytes
+  transferId_gte: linea_Bytes
+  transferId_lte: linea_Bytes
   transferId_in: [linea_Bytes!]
   transferId_not_in: [linea_Bytes!]
   transferId_contains: linea_Bytes
@@ -1083,6 +1252,10 @@ input linea_OriginTransfer_filter {
   status_not_in: [linea_TransferStatus!]
   messageHash: linea_Bytes
   messageHash_not: linea_Bytes
+  messageHash_gt: linea_Bytes
+  messageHash_lt: linea_Bytes
+  messageHash_gte: linea_Bytes
+  messageHash_lte: linea_Bytes
   messageHash_in: [linea_Bytes!]
   messageHash_not_in: [linea_Bytes!]
   messageHash_contains: linea_Bytes
@@ -1113,12 +1286,20 @@ input linea_OriginTransfer_filter {
   canonicalDomain_not_in: [BigInt!]
   to: linea_Bytes
   to_not: linea_Bytes
+  to_gt: linea_Bytes
+  to_lt: linea_Bytes
+  to_gte: linea_Bytes
+  to_lte: linea_Bytes
   to_in: [linea_Bytes!]
   to_not_in: [linea_Bytes!]
   to_contains: linea_Bytes
   to_not_contains: linea_Bytes
   delegate: linea_Bytes
   delegate_not: linea_Bytes
+  delegate_gt: linea_Bytes
+  delegate_lt: linea_Bytes
+  delegate_gte: linea_Bytes
+  delegate_lte: linea_Bytes
   delegate_in: [linea_Bytes!]
   delegate_not_in: [linea_Bytes!]
   delegate_contains: linea_Bytes
@@ -1129,6 +1310,10 @@ input linea_OriginTransfer_filter {
   receiveLocal_not_in: [Boolean!]
   callData: linea_Bytes
   callData_not: linea_Bytes
+  callData_gt: linea_Bytes
+  callData_lt: linea_Bytes
+  callData_gte: linea_Bytes
+  callData_lte: linea_Bytes
   callData_in: [linea_Bytes!]
   callData_not_in: [linea_Bytes!]
   callData_contains: linea_Bytes
@@ -1143,6 +1328,10 @@ input linea_OriginTransfer_filter {
   slippage_not_in: [BigInt!]
   originSender: linea_Bytes
   originSender_not: linea_Bytes
+  originSender_gt: linea_Bytes
+  originSender_lt: linea_Bytes
+  originSender_gte: linea_Bytes
+  originSender_lte: linea_Bytes
   originSender_in: [linea_Bytes!]
   originSender_not_in: [linea_Bytes!]
   originSender_contains: linea_Bytes
@@ -1165,6 +1354,10 @@ input linea_OriginTransfer_filter {
   normalizedIn_not_in: [BigInt!]
   canonicalId: linea_Bytes
   canonicalId_not: linea_Bytes
+  canonicalId_gt: linea_Bytes
+  canonicalId_lt: linea_Bytes
+  canonicalId_gte: linea_Bytes
+  canonicalId_lte: linea_Bytes
   canonicalId_in: [linea_Bytes!]
   canonicalId_not_in: [linea_Bytes!]
   canonicalId_contains: linea_Bytes
@@ -1192,6 +1385,10 @@ input linea_OriginTransfer_filter {
   asset_: linea_Asset_filter
   transactingAsset: linea_Bytes
   transactingAsset_not: linea_Bytes
+  transactingAsset_gt: linea_Bytes
+  transactingAsset_lt: linea_Bytes
+  transactingAsset_gte: linea_Bytes
+  transactingAsset_lte: linea_Bytes
   transactingAsset_in: [linea_Bytes!]
   transactingAsset_not_in: [linea_Bytes!]
   transactingAsset_contains: linea_Bytes
@@ -1234,18 +1431,30 @@ input linea_OriginTransfer_filter {
   relayerFees_: linea_RelayerFee_filter
   initialRelayerFeeAsset: linea_Bytes
   initialRelayerFeeAsset_not: linea_Bytes
+  initialRelayerFeeAsset_gt: linea_Bytes
+  initialRelayerFeeAsset_lt: linea_Bytes
+  initialRelayerFeeAsset_gte: linea_Bytes
+  initialRelayerFeeAsset_lte: linea_Bytes
   initialRelayerFeeAsset_in: [linea_Bytes!]
   initialRelayerFeeAsset_not_in: [linea_Bytes!]
   initialRelayerFeeAsset_contains: linea_Bytes
   initialRelayerFeeAsset_not_contains: linea_Bytes
   caller: linea_Bytes
   caller_not: linea_Bytes
+  caller_gt: linea_Bytes
+  caller_lt: linea_Bytes
+  caller_gte: linea_Bytes
+  caller_lte: linea_Bytes
   caller_in: [linea_Bytes!]
   caller_not_in: [linea_Bytes!]
   caller_contains: linea_Bytes
   caller_not_contains: linea_Bytes
   transactionHash: linea_Bytes
   transactionHash_not: linea_Bytes
+  transactionHash_gt: linea_Bytes
+  transactionHash_lt: linea_Bytes
+  transactionHash_gte: linea_Bytes
+  transactionHash_lte: linea_Bytes
   transactionHash_in: [linea_Bytes!]
   transactionHash_not_in: [linea_Bytes!]
   transactionHash_contains: linea_Bytes
@@ -1284,6 +1493,10 @@ input linea_OriginTransfer_filter {
   blockNumber_not_in: [BigInt!]
   txOrigin: linea_Bytes
   txOrigin_not: linea_Bytes
+  txOrigin_gt: linea_Bytes
+  txOrigin_lt: linea_Bytes
+  txOrigin_gte: linea_Bytes
+  txOrigin_lte: linea_Bytes
   txOrigin_in: [linea_Bytes!]
   txOrigin_not_in: [linea_Bytes!]
   txOrigin_contains: linea_Bytes
@@ -1298,6 +1511,8 @@ input linea_OriginTransfer_filter {
   txNonce_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_OriginTransfer_filter]
+  or: [linea_OriginTransfer_filter]
 }
 
 enum linea_OriginTransfer_orderBy {
@@ -1320,8 +1535,26 @@ enum linea_OriginTransfer_orderBy {
   normalizedIn
   canonicalId
   asset
+  asset__id
+  asset__key
+  asset__decimal
+  asset__adoptedDecimal
+  asset__canonicalId
+  asset__canonicalDomain
+  asset__adoptedAsset
+  asset__localAsset
+  asset__blockNumber
   transactingAsset
   message
+  message__id
+  message__transferId
+  message__destinationDomain
+  message__leaf
+  message__index
+  message__message
+  message__root
+  message__transactionHash
+  message__blockNumber
   bumpRelayerFeeCount
   relayerFees
   initialRelayerFeeAsset
@@ -1991,17 +2224,52 @@ input linea_RelayerFee_filter {
   fee_not_in: [BigInt!]
   asset: linea_Bytes
   asset_not: linea_Bytes
+  asset_gt: linea_Bytes
+  asset_lt: linea_Bytes
+  asset_gte: linea_Bytes
+  asset_lte: linea_Bytes
   asset_in: [linea_Bytes!]
   asset_not_in: [linea_Bytes!]
   asset_contains: linea_Bytes
   asset_not_contains: linea_Bytes
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_RelayerFee_filter]
+  or: [linea_RelayerFee_filter]
 }
 
 enum linea_RelayerFee_orderBy {
   id
   transfer
+  transfer__id
+  transfer__chainId
+  transfer__transferId
+  transfer__nonce
+  transfer__status
+  transfer__messageHash
+  transfer__originDomain
+  transfer__destinationDomain
+  transfer__canonicalDomain
+  transfer__to
+  transfer__delegate
+  transfer__receiveLocal
+  transfer__callData
+  transfer__slippage
+  transfer__originSender
+  transfer__bridgedAmt
+  transfer__normalizedIn
+  transfer__canonicalId
+  transfer__transactingAsset
+  transfer__bumpRelayerFeeCount
+  transfer__initialRelayerFeeAsset
+  transfer__caller
+  transfer__transactionHash
+  transfer__timestamp
+  transfer__gasPrice
+  transfer__gasLimit
+  transfer__blockNumber
+  transfer__txOrigin
+  transfer__txNonce
   fee
   asset
 }
@@ -2059,18 +2327,30 @@ input linea_RelayerFeesIncrease_filter {
   increase_not_in: [BigInt!]
   asset: linea_Bytes
   asset_not: linea_Bytes
+  asset_gt: linea_Bytes
+  asset_lt: linea_Bytes
+  asset_gte: linea_Bytes
+  asset_lte: linea_Bytes
   asset_in: [linea_Bytes!]
   asset_not_in: [linea_Bytes!]
   asset_contains: linea_Bytes
   asset_not_contains: linea_Bytes
   caller: linea_Bytes
   caller_not: linea_Bytes
+  caller_gt: linea_Bytes
+  caller_lt: linea_Bytes
+  caller_gte: linea_Bytes
+  caller_lte: linea_Bytes
   caller_in: [linea_Bytes!]
   caller_not_in: [linea_Bytes!]
   caller_contains: linea_Bytes
   caller_not_contains: linea_Bytes
   transactionHash: linea_Bytes
   transactionHash_not: linea_Bytes
+  transactionHash_gt: linea_Bytes
+  transactionHash_lt: linea_Bytes
+  transactionHash_gte: linea_Bytes
+  transactionHash_lte: linea_Bytes
   transactionHash_in: [linea_Bytes!]
   transactionHash_not_in: [linea_Bytes!]
   transactionHash_contains: linea_Bytes
@@ -2109,11 +2389,42 @@ input linea_RelayerFeesIncrease_filter {
   blockNumber_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_RelayerFeesIncrease_filter]
+  or: [linea_RelayerFeesIncrease_filter]
 }
 
 enum linea_RelayerFeesIncrease_orderBy {
   id
   transfer
+  transfer__id
+  transfer__chainId
+  transfer__transferId
+  transfer__nonce
+  transfer__status
+  transfer__messageHash
+  transfer__originDomain
+  transfer__destinationDomain
+  transfer__canonicalDomain
+  transfer__to
+  transfer__delegate
+  transfer__receiveLocal
+  transfer__callData
+  transfer__slippage
+  transfer__originSender
+  transfer__bridgedAmt
+  transfer__normalizedIn
+  transfer__canonicalId
+  transfer__transactingAsset
+  transfer__bumpRelayerFeeCount
+  transfer__initialRelayerFeeAsset
+  transfer__caller
+  transfer__transactionHash
+  transfer__timestamp
+  transfer__gasPrice
+  transfer__gasLimit
+  transfer__blockNumber
+  transfer__txOrigin
+  transfer__txNonce
   increase
   asset
   caller
@@ -2139,12 +2450,18 @@ input linea_Relayer_filter {
   isActive_not_in: [Boolean!]
   relayer: linea_Bytes
   relayer_not: linea_Bytes
+  relayer_gt: linea_Bytes
+  relayer_lt: linea_Bytes
+  relayer_gte: linea_Bytes
+  relayer_lte: linea_Bytes
   relayer_in: [linea_Bytes!]
   relayer_not_in: [linea_Bytes!]
   relayer_contains: linea_Bytes
   relayer_not_contains: linea_Bytes
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_Relayer_filter]
+  or: [linea_Relayer_filter]
 }
 
 enum linea_Relayer_orderBy {
@@ -2177,6 +2494,8 @@ input linea_RootCount_filter {
   count_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_RootCount_filter]
+  or: [linea_RootCount_filter]
 }
 
 enum linea_RootCount_orderBy {
@@ -2225,6 +2544,10 @@ input linea_RootMessageSent_filter {
   hubDomain_not_in: [BigInt!]
   root: linea_Bytes
   root_not: linea_Bytes
+  root_gt: linea_Bytes
+  root_lt: linea_Bytes
+  root_gte: linea_Bytes
+  root_lte: linea_Bytes
   root_in: [linea_Bytes!]
   root_not_in: [linea_Bytes!]
   root_contains: linea_Bytes
@@ -2239,12 +2562,20 @@ input linea_RootMessageSent_filter {
   count_not_in: [BigInt!]
   caller: linea_Bytes
   caller_not: linea_Bytes
+  caller_gt: linea_Bytes
+  caller_lt: linea_Bytes
+  caller_gte: linea_Bytes
+  caller_lte: linea_Bytes
   caller_in: [linea_Bytes!]
   caller_not_in: [linea_Bytes!]
   caller_contains: linea_Bytes
   caller_not_contains: linea_Bytes
   transactionHash: linea_Bytes
   transactionHash_not: linea_Bytes
+  transactionHash_gt: linea_Bytes
+  transactionHash_lt: linea_Bytes
+  transactionHash_gte: linea_Bytes
+  transactionHash_lte: linea_Bytes
   transactionHash_in: [linea_Bytes!]
   transactionHash_not_in: [linea_Bytes!]
   transactionHash_contains: linea_Bytes
@@ -2283,6 +2614,8 @@ input linea_RootMessageSent_filter {
   blockNumber_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_RootMessageSent_filter]
+  or: [linea_RootMessageSent_filter]
 }
 
 enum linea_RootMessageSent_orderBy {
@@ -2386,12 +2719,29 @@ input linea_RouterDailyTVL_filter {
   balance_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_RouterDailyTVL_filter]
+  or: [linea_RouterDailyTVL_filter]
 }
 
 enum linea_RouterDailyTVL_orderBy {
   id
   router
+  router__id
+  router__isActive
+  router__owner
+  router__recipient
+  router__proposedOwner
+  router__proposedTimestamp
   asset
+  asset__id
+  asset__key
+  asset__decimal
+  asset__adoptedDecimal
+  asset__canonicalId
+  asset__canonicalDomain
+  asset__adoptedAsset
+  asset__localAsset
+  asset__blockNumber
   timestamp
   balance
 }
@@ -2488,6 +2838,10 @@ input linea_RouterLiquidityEvent_filter {
   balance_not_in: [BigInt!]
   caller: linea_Bytes
   caller_not: linea_Bytes
+  caller_gt: linea_Bytes
+  caller_lt: linea_Bytes
+  caller_gte: linea_Bytes
+  caller_lte: linea_Bytes
   caller_in: [linea_Bytes!]
   caller_not_in: [linea_Bytes!]
   caller_contains: linea_Bytes
@@ -2510,6 +2864,10 @@ input linea_RouterLiquidityEvent_filter {
   timestamp_not_in: [BigInt!]
   transactionHash: linea_Bytes
   transactionHash_not: linea_Bytes
+  transactionHash_gt: linea_Bytes
+  transactionHash_lt: linea_Bytes
+  transactionHash_gte: linea_Bytes
+  transactionHash_lte: linea_Bytes
   transactionHash_in: [linea_Bytes!]
   transactionHash_not_in: [linea_Bytes!]
   transactionHash_contains: linea_Bytes
@@ -2524,13 +2882,30 @@ input linea_RouterLiquidityEvent_filter {
   nonce_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_RouterLiquidityEvent_filter]
+  or: [linea_RouterLiquidityEvent_filter]
 }
 
 enum linea_RouterLiquidityEvent_orderBy {
   id
   type
   router
+  router__id
+  router__isActive
+  router__owner
+  router__recipient
+  router__proposedOwner
+  router__proposedTimestamp
   asset
+  asset__id
+  asset__key
+  asset__decimal
+  asset__adoptedDecimal
+  asset__canonicalId
+  asset__canonicalDomain
+  asset__adoptedAsset
+  asset__localAsset
+  asset__blockNumber
   amount
   balance
   caller
@@ -2555,18 +2930,30 @@ input linea_Router_filter {
   isActive_not_in: [Boolean!]
   owner: linea_Bytes
   owner_not: linea_Bytes
+  owner_gt: linea_Bytes
+  owner_lt: linea_Bytes
+  owner_gte: linea_Bytes
+  owner_lte: linea_Bytes
   owner_in: [linea_Bytes!]
   owner_not_in: [linea_Bytes!]
   owner_contains: linea_Bytes
   owner_not_contains: linea_Bytes
   recipient: linea_Bytes
   recipient_not: linea_Bytes
+  recipient_gt: linea_Bytes
+  recipient_lt: linea_Bytes
+  recipient_gte: linea_Bytes
+  recipient_lte: linea_Bytes
   recipient_in: [linea_Bytes!]
   recipient_not_in: [linea_Bytes!]
   recipient_contains: linea_Bytes
   recipient_not_contains: linea_Bytes
   proposedOwner: linea_Bytes
   proposedOwner_not: linea_Bytes
+  proposedOwner_gt: linea_Bytes
+  proposedOwner_lt: linea_Bytes
+  proposedOwner_gte: linea_Bytes
+  proposedOwner_lte: linea_Bytes
   proposedOwner_in: [linea_Bytes!]
   proposedOwner_not_in: [linea_Bytes!]
   proposedOwner_contains: linea_Bytes
@@ -2582,6 +2969,8 @@ input linea_Router_filter {
   assetBalances_: linea_AssetBalance_filter
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_Router_filter]
+  or: [linea_Router_filter]
 }
 
 enum linea_Router_orderBy {
@@ -2615,12 +3004,18 @@ input linea_Sequencer_filter {
   isActive_not_in: [Boolean!]
   sequencer: linea_Bytes
   sequencer_not: linea_Bytes
+  sequencer_gt: linea_Bytes
+  sequencer_lt: linea_Bytes
+  sequencer_gte: linea_Bytes
+  sequencer_lte: linea_Bytes
   sequencer_in: [linea_Bytes!]
   sequencer_not_in: [linea_Bytes!]
   sequencer_contains: linea_Bytes
   sequencer_not_contains: linea_Bytes
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_Sequencer_filter]
+  or: [linea_Sequencer_filter]
 }
 
 enum linea_Sequencer_orderBy {
@@ -2654,12 +3049,18 @@ input linea_Setting_filter {
   maxRoutersPerTransfer_not_in: [BigInt!]
   caller: linea_Bytes
   caller_not: linea_Bytes
+  caller_gt: linea_Bytes
+  caller_lt: linea_Bytes
+  caller_gte: linea_Bytes
+  caller_lte: linea_Bytes
   caller_in: [linea_Bytes!]
   caller_not_in: [linea_Bytes!]
   caller_contains: linea_Bytes
   caller_not_contains: linea_Bytes
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_Setting_filter]
+  or: [linea_Setting_filter]
 }
 
 enum linea_Setting_orderBy {
@@ -2720,12 +3121,20 @@ input linea_SlippageUpdate_filter {
   slippage_not_in: [BigInt!]
   caller: linea_Bytes
   caller_not: linea_Bytes
+  caller_gt: linea_Bytes
+  caller_lt: linea_Bytes
+  caller_gte: linea_Bytes
+  caller_lte: linea_Bytes
   caller_in: [linea_Bytes!]
   caller_not_in: [linea_Bytes!]
   caller_contains: linea_Bytes
   caller_not_contains: linea_Bytes
   transactionHash: linea_Bytes
   transactionHash_not: linea_Bytes
+  transactionHash_gt: linea_Bytes
+  transactionHash_lt: linea_Bytes
+  transactionHash_gte: linea_Bytes
+  transactionHash_lte: linea_Bytes
   transactionHash_in: [linea_Bytes!]
   transactionHash_not_in: [linea_Bytes!]
   transactionHash_contains: linea_Bytes
@@ -2764,11 +3173,49 @@ input linea_SlippageUpdate_filter {
   blockNumber_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_SlippageUpdate_filter]
+  or: [linea_SlippageUpdate_filter]
 }
 
 enum linea_SlippageUpdate_orderBy {
   id
   transfer
+  transfer__id
+  transfer__chainId
+  transfer__transferId
+  transfer__nonce
+  transfer__status
+  transfer__originDomain
+  transfer__destinationDomain
+  transfer__canonicalDomain
+  transfer__to
+  transfer__delegate
+  transfer__receiveLocal
+  transfer__callData
+  transfer__slippage
+  transfer__bumpSlippageCount
+  transfer__originSender
+  transfer__bridgedAmt
+  transfer__normalizedIn
+  transfer__canonicalId
+  transfer__amount
+  transfer__routersFee
+  transfer__executedCaller
+  transfer__executedTransactionHash
+  transfer__executedTimestamp
+  transfer__executedGasPrice
+  transfer__executedGasLimit
+  transfer__executedBlockNumber
+  transfer__executedTxOrigin
+  transfer__executedTxNonce
+  transfer__reconciledCaller
+  transfer__reconciledTransactionHash
+  transfer__reconciledTimestamp
+  transfer__reconciledGasPrice
+  transfer__reconciledGasLimit
+  transfer__reconciledBlockNumber
+  transfer__reconciledTxOrigin
+  transfer__reconciledTxNonce
   slippage
   caller
   transactionHash
@@ -2806,6 +3253,10 @@ input linea_SnapshotRoot_filter {
   spokeDomain_not_in: [BigInt!]
   root: linea_Bytes
   root_not: linea_Bytes
+  root_gt: linea_Bytes
+  root_lt: linea_Bytes
+  root_gte: linea_Bytes
+  root_lte: linea_Bytes
   root_in: [linea_Bytes!]
   root_not_in: [linea_Bytes!]
   root_contains: linea_Bytes
@@ -2836,6 +3287,8 @@ input linea_SnapshotRoot_filter {
   blockNumber_not_in: [BigInt!]
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_SnapshotRoot_filter]
+  or: [linea_SnapshotRoot_filter]
 }
 
 enum linea_SnapshotRoot_orderBy {
@@ -2883,6 +3336,8 @@ input linea_SpokeConnectorMode_filter {
   mode_not_ends_with_nocase: String
   """Filter for the block changed event."""
   _change_block: linea_BlockChangedFilter
+  and: [linea_SpokeConnectorMode_filter]
+  or: [linea_SpokeConnectorMode_filter]
 }
 
 enum linea_SpokeConnectorMode_orderBy {
@@ -3493,6 +3948,12 @@ type Subscription {
   linea__meta(block: linea_Block_height): linea__Meta_
 }
 
+"""
+A string representation of microseconds UNIX timestamp (16 digits)
+
+"""
+scalar Timestamp
+
 enum linea_TransferStatus {
   XCalled
   Executed
@@ -3508,6 +3969,8 @@ type linea__Block_ {
   number: Int!
   """Integer representation of the timestamp stored in blocks for the chain"""
   timestamp: Int
+  """The hash of the parent block"""
+  parentHash: linea_Bytes
 }
 
 """The type for the top-level _meta field"""

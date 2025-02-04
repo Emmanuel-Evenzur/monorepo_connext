@@ -19,7 +19,13 @@ export type Scalars = {
   linea_swap_BigDecimal: any;
   BigInt: any;
   linea_swap_Bytes: any;
+  linea_swap_Int8: any;
+  Timestamp: any;
 };
+
+export type linea_swap_Aggregation_interval =
+  | 'hour'
+  | 'day';
 
 export type linea_swap_BlockChangedFilter = {
   number_gte: Scalars['Int'];
@@ -133,18 +139,32 @@ export type linea_swap_LpAccountBalance_filter = {
   modified_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   transaction?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_not_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_LpAccountBalance_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_LpAccountBalance_filter>>>;
 };
 
 export type linea_swap_LpAccountBalance_orderBy =
   | 'id'
   | 'account'
+  | 'account__id'
+  | 'account__address'
   | 'token'
+  | 'token__id'
+  | 'token__address'
+  | 'token__decimals'
+  | 'token__name'
+  | 'token__symbol'
+  | 'token__totalSupply'
   | 'amount'
   | 'block'
   | 'modified'
@@ -161,6 +181,10 @@ export type linea_swap_LpAccount_filter = {
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
   address?: InputMaybe<Scalars['linea_swap_Bytes']>;
   address_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  address_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  address_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  address_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  address_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   address_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   address_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   address_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -168,6 +192,8 @@ export type linea_swap_LpAccount_filter = {
   balances_?: InputMaybe<linea_swap_LpAccountBalance_filter>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_LpAccount_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_LpAccount_filter>>>;
 };
 
 export type linea_swap_LpAccount_orderBy =
@@ -261,6 +287,10 @@ export type linea_swap_LpTokenEvent_filter = {
   timestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   transaction?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -275,11 +305,19 @@ export type linea_swap_LpTokenEvent_filter = {
   nonce_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_LpTokenEvent_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_LpTokenEvent_filter>>>;
 };
 
 export type linea_swap_LpTokenEvent_orderBy =
   | 'id'
   | 'token'
+  | 'token__id'
+  | 'token__address'
+  | 'token__decimals'
+  | 'token__name'
+  | 'token__symbol'
+  | 'token__totalSupply'
   | 'amount'
   | 'block'
   | 'timestamp'
@@ -297,6 +335,10 @@ export type linea_swap_LpToken_filter = {
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
   address?: InputMaybe<Scalars['linea_swap_Bytes']>;
   address_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  address_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  address_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  address_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  address_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   address_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   address_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   address_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -378,14 +420,33 @@ export type linea_swap_LpToken_filter = {
   totalSupply_lte?: InputMaybe<Scalars['linea_swap_BigDecimal']>;
   totalSupply_in?: InputMaybe<Array<Scalars['linea_swap_BigDecimal']>>;
   totalSupply_not_in?: InputMaybe<Array<Scalars['linea_swap_BigDecimal']>>;
+  events_?: InputMaybe<linea_swap_LpTokenEvent_filter>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_LpToken_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_LpToken_filter>>>;
 };
 
 export type linea_swap_LpToken_orderBy =
   | 'id'
   | 'address'
   | 'stableSwap'
+  | 'stableSwap__id'
+  | 'stableSwap__isActive'
+  | 'stableSwap__key'
+  | 'stableSwap__canonicalId'
+  | 'stableSwap__domain'
+  | 'stableSwap__swapPool'
+  | 'stableSwap__lpToken'
+  | 'stableSwap__initialA'
+  | 'stableSwap__futureA'
+  | 'stableSwap__initialATime'
+  | 'stableSwap__futureATime'
+  | 'stableSwap__swapFee'
+  | 'stableSwap__adminFee'
+  | 'stableSwap__virtualPrice'
+  | 'stableSwap__invariant'
+  | 'stableSwap__lpTokenSupply'
   | 'decimals'
   | 'name'
   | 'symbol'
@@ -446,12 +507,20 @@ export type linea_swap_LpTransferEvent_filter = {
   amount_not_in?: InputMaybe<Array<Scalars['linea_swap_BigDecimal']>>;
   from?: InputMaybe<Scalars['linea_swap_Bytes']>;
   from_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  from_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  from_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  from_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  from_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   from_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   from_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   from_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
   from_not_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
   to?: InputMaybe<Scalars['linea_swap_Bytes']>;
   to_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  to_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  to_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  to_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  to_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   to_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   to_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   to_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -490,6 +559,10 @@ export type linea_swap_LpTransferEvent_filter = {
   timestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   transaction?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -504,11 +577,19 @@ export type linea_swap_LpTransferEvent_filter = {
   nonce_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_LpTransferEvent_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_LpTransferEvent_filter>>>;
 };
 
 export type linea_swap_LpTransferEvent_orderBy =
   | 'id'
   | 'token'
+  | 'token__id'
+  | 'token__address'
+  | 'token__decimals'
+  | 'token__name'
+  | 'token__symbol'
+  | 'token__totalSupply'
   | 'amount'
   | 'from'
   | 'to'
@@ -540,12 +621,18 @@ export type linea_swap_PooledToken_filter = {
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
   asset?: InputMaybe<Scalars['linea_swap_Bytes']>;
   asset_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  asset_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  asset_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  asset_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  asset_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   asset_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   asset_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   asset_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
   asset_not_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_PooledToken_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_PooledToken_filter>>>;
 };
 
 export type linea_swap_PooledToken_orderBy =
@@ -1003,6 +1090,10 @@ export type linea_swap_StableSwapAddLiquidityEvent_filter = {
   stableSwap_?: InputMaybe<linea_swap_StableSwap_filter>;
   provider?: InputMaybe<Scalars['linea_swap_Bytes']>;
   provider_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  provider_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  provider_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  provider_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  provider_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   provider_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   provider_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   provider_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -1067,6 +1158,10 @@ export type linea_swap_StableSwapAddLiquidityEvent_filter = {
   timestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   transaction?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -1081,11 +1176,29 @@ export type linea_swap_StableSwapAddLiquidityEvent_filter = {
   nonce_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_StableSwapAddLiquidityEvent_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_StableSwapAddLiquidityEvent_filter>>>;
 };
 
 export type linea_swap_StableSwapAddLiquidityEvent_orderBy =
   | 'id'
   | 'stableSwap'
+  | 'stableSwap__id'
+  | 'stableSwap__isActive'
+  | 'stableSwap__key'
+  | 'stableSwap__canonicalId'
+  | 'stableSwap__domain'
+  | 'stableSwap__swapPool'
+  | 'stableSwap__lpToken'
+  | 'stableSwap__initialA'
+  | 'stableSwap__futureA'
+  | 'stableSwap__initialATime'
+  | 'stableSwap__futureATime'
+  | 'stableSwap__swapFee'
+  | 'stableSwap__adminFee'
+  | 'stableSwap__virtualPrice'
+  | 'stableSwap__invariant'
+  | 'stableSwap__lpTokenSupply'
   | 'provider'
   | 'tokenAmounts'
   | 'fees'
@@ -1155,6 +1268,10 @@ export type linea_swap_StableSwapEvent_filter = {
   timestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   transaction?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -1169,11 +1286,29 @@ export type linea_swap_StableSwapEvent_filter = {
   nonce_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_StableSwapEvent_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_StableSwapEvent_filter>>>;
 };
 
 export type linea_swap_StableSwapEvent_orderBy =
   | 'id'
   | 'stableSwap'
+  | 'stableSwap__id'
+  | 'stableSwap__isActive'
+  | 'stableSwap__key'
+  | 'stableSwap__canonicalId'
+  | 'stableSwap__domain'
+  | 'stableSwap__swapPool'
+  | 'stableSwap__lpToken'
+  | 'stableSwap__initialA'
+  | 'stableSwap__futureA'
+  | 'stableSwap__initialATime'
+  | 'stableSwap__futureATime'
+  | 'stableSwap__swapFee'
+  | 'stableSwap__adminFee'
+  | 'stableSwap__virtualPrice'
+  | 'stableSwap__invariant'
+  | 'stableSwap__lpTokenSupply'
   | 'block'
   | 'timestamp'
   | 'transaction'
@@ -1227,6 +1362,10 @@ export type linea_swap_StableSwapExchange_filter = {
   stableSwap_?: InputMaybe<linea_swap_StableSwap_filter>;
   buyer?: InputMaybe<Scalars['linea_swap_Bytes']>;
   buyer_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  buyer_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  buyer_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  buyer_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  buyer_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   buyer_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   buyer_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   buyer_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -1295,6 +1434,10 @@ export type linea_swap_StableSwapExchange_filter = {
   timestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   transaction?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -1309,11 +1452,29 @@ export type linea_swap_StableSwapExchange_filter = {
   nonce_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_StableSwapExchange_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_StableSwapExchange_filter>>>;
 };
 
 export type linea_swap_StableSwapExchange_orderBy =
   | 'id'
   | 'stableSwap'
+  | 'stableSwap__id'
+  | 'stableSwap__isActive'
+  | 'stableSwap__key'
+  | 'stableSwap__canonicalId'
+  | 'stableSwap__domain'
+  | 'stableSwap__swapPool'
+  | 'stableSwap__lpToken'
+  | 'stableSwap__initialA'
+  | 'stableSwap__futureA'
+  | 'stableSwap__initialATime'
+  | 'stableSwap__futureATime'
+  | 'stableSwap__swapFee'
+  | 'stableSwap__adminFee'
+  | 'stableSwap__virtualPrice'
+  | 'stableSwap__invariant'
+  | 'stableSwap__lpTokenSupply'
   | 'buyer'
   | 'boughtId'
   | 'tokensBought'
@@ -1374,6 +1535,10 @@ export type linea_swap_StableSwapRemoveLiquidityEvent_filter = {
   stableSwap_?: InputMaybe<linea_swap_StableSwap_filter>;
   provider?: InputMaybe<Scalars['linea_swap_Bytes']>;
   provider_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  provider_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  provider_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  provider_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  provider_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   provider_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   provider_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   provider_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -1438,6 +1603,10 @@ export type linea_swap_StableSwapRemoveLiquidityEvent_filter = {
   timestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   transaction?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  transaction_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   transaction_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   transaction_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -1452,11 +1621,29 @@ export type linea_swap_StableSwapRemoveLiquidityEvent_filter = {
   nonce_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_StableSwapRemoveLiquidityEvent_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_StableSwapRemoveLiquidityEvent_filter>>>;
 };
 
 export type linea_swap_StableSwapRemoveLiquidityEvent_orderBy =
   | 'id'
   | 'stableSwap'
+  | 'stableSwap__id'
+  | 'stableSwap__isActive'
+  | 'stableSwap__key'
+  | 'stableSwap__canonicalId'
+  | 'stableSwap__domain'
+  | 'stableSwap__swapPool'
+  | 'stableSwap__lpToken'
+  | 'stableSwap__initialA'
+  | 'stableSwap__futureA'
+  | 'stableSwap__initialATime'
+  | 'stableSwap__futureATime'
+  | 'stableSwap__swapFee'
+  | 'stableSwap__adminFee'
+  | 'stableSwap__virtualPrice'
+  | 'stableSwap__invariant'
+  | 'stableSwap__lpTokenSupply'
   | 'provider'
   | 'tokenAmounts'
   | 'fees'
@@ -1484,12 +1671,20 @@ export type linea_swap_StableSwap_filter = {
   isActive_not_in?: InputMaybe<Array<Scalars['Boolean']>>;
   key?: InputMaybe<Scalars['linea_swap_Bytes']>;
   key_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  key_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  key_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  key_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  key_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   key_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   key_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   key_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
   key_not_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
   canonicalId?: InputMaybe<Scalars['linea_swap_Bytes']>;
   canonicalId_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  canonicalId_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  canonicalId_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  canonicalId_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  canonicalId_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   canonicalId_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   canonicalId_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   canonicalId_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -1504,12 +1699,20 @@ export type linea_swap_StableSwap_filter = {
   domain_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   swapPool?: InputMaybe<Scalars['linea_swap_Bytes']>;
   swapPool_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  swapPool_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  swapPool_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  swapPool_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  swapPool_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   swapPool_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   swapPool_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   swapPool_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
   swapPool_not_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
   lpToken?: InputMaybe<Scalars['linea_swap_Bytes']>;
   lpToken_not?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  lpToken_gt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  lpToken_lt?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  lpToken_gte?: InputMaybe<Scalars['linea_swap_Bytes']>;
+  lpToken_lte?: InputMaybe<Scalars['linea_swap_Bytes']>;
   lpToken_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   lpToken_not_in?: InputMaybe<Array<Scalars['linea_swap_Bytes']>>;
   lpToken_contains?: InputMaybe<Scalars['linea_swap_Bytes']>;
@@ -1610,12 +1813,15 @@ export type linea_swap_StableSwap_filter = {
   lpTokenSupply_lte?: InputMaybe<Scalars['BigInt']>;
   lpTokenSupply_in?: InputMaybe<Array<Scalars['BigInt']>>;
   lpTokenSupply_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  events_?: InputMaybe<linea_swap_StableSwapEvent_filter>;
   exchanges_?: InputMaybe<linea_swap_StableSwapExchange_filter>;
   hourlyVolumes_?: InputMaybe<linea_swap_SwapHourlyVolume_filter>;
   dailyVolumes_?: InputMaybe<linea_swap_SwapDailyVolume_filter>;
   weeklyVolumes_?: InputMaybe<linea_swap_SwapWeeklyVolume_filter>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_StableSwap_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_StableSwap_filter>>>;
 };
 
 export type linea_swap_StableSwap_orderBy =
@@ -2030,11 +2236,29 @@ export type linea_swap_SwapDailyVolume_filter = {
   volume_not_in?: InputMaybe<Array<Scalars['linea_swap_BigDecimal']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_SwapDailyVolume_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_SwapDailyVolume_filter>>>;
 };
 
 export type linea_swap_SwapDailyVolume_orderBy =
   | 'id'
   | 'stableSwap'
+  | 'stableSwap__id'
+  | 'stableSwap__isActive'
+  | 'stableSwap__key'
+  | 'stableSwap__canonicalId'
+  | 'stableSwap__domain'
+  | 'stableSwap__swapPool'
+  | 'stableSwap__lpToken'
+  | 'stableSwap__initialA'
+  | 'stableSwap__futureA'
+  | 'stableSwap__initialATime'
+  | 'stableSwap__futureATime'
+  | 'stableSwap__swapFee'
+  | 'stableSwap__adminFee'
+  | 'stableSwap__virtualPrice'
+  | 'stableSwap__invariant'
+  | 'stableSwap__lpTokenSupply'
   | 'timestamp'
   | 'volume';
 
@@ -2093,11 +2317,29 @@ export type linea_swap_SwapHourlyVolume_filter = {
   volume_not_in?: InputMaybe<Array<Scalars['linea_swap_BigDecimal']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_SwapHourlyVolume_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_SwapHourlyVolume_filter>>>;
 };
 
 export type linea_swap_SwapHourlyVolume_orderBy =
   | 'id'
   | 'stableSwap'
+  | 'stableSwap__id'
+  | 'stableSwap__isActive'
+  | 'stableSwap__key'
+  | 'stableSwap__canonicalId'
+  | 'stableSwap__domain'
+  | 'stableSwap__swapPool'
+  | 'stableSwap__lpToken'
+  | 'stableSwap__initialA'
+  | 'stableSwap__futureA'
+  | 'stableSwap__initialATime'
+  | 'stableSwap__futureATime'
+  | 'stableSwap__swapFee'
+  | 'stableSwap__adminFee'
+  | 'stableSwap__virtualPrice'
+  | 'stableSwap__invariant'
+  | 'stableSwap__lpTokenSupply'
   | 'timestamp'
   | 'volume';
 
@@ -2147,10 +2389,28 @@ export type linea_swap_SwapTradeVolume_filter = {
   volume_not_in?: InputMaybe<Array<Scalars['linea_swap_BigDecimal']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_SwapTradeVolume_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_SwapTradeVolume_filter>>>;
 };
 
 export type linea_swap_SwapTradeVolume_orderBy =
   | 'stableSwap'
+  | 'stableSwap__id'
+  | 'stableSwap__isActive'
+  | 'stableSwap__key'
+  | 'stableSwap__canonicalId'
+  | 'stableSwap__domain'
+  | 'stableSwap__swapPool'
+  | 'stableSwap__lpToken'
+  | 'stableSwap__initialA'
+  | 'stableSwap__futureA'
+  | 'stableSwap__initialATime'
+  | 'stableSwap__futureATime'
+  | 'stableSwap__swapFee'
+  | 'stableSwap__adminFee'
+  | 'stableSwap__virtualPrice'
+  | 'stableSwap__invariant'
+  | 'stableSwap__lpTokenSupply'
   | 'timestamp'
   | 'volume';
 
@@ -2209,11 +2469,29 @@ export type linea_swap_SwapWeeklyVolume_filter = {
   volume_not_in?: InputMaybe<Array<Scalars['linea_swap_BigDecimal']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_SwapWeeklyVolume_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_SwapWeeklyVolume_filter>>>;
 };
 
 export type linea_swap_SwapWeeklyVolume_orderBy =
   | 'id'
   | 'stableSwap'
+  | 'stableSwap__id'
+  | 'stableSwap__isActive'
+  | 'stableSwap__key'
+  | 'stableSwap__canonicalId'
+  | 'stableSwap__domain'
+  | 'stableSwap__swapPool'
+  | 'stableSwap__lpToken'
+  | 'stableSwap__initialA'
+  | 'stableSwap__futureA'
+  | 'stableSwap__initialATime'
+  | 'stableSwap__futureATime'
+  | 'stableSwap__swapFee'
+  | 'stableSwap__adminFee'
+  | 'stableSwap__virtualPrice'
+  | 'stableSwap__invariant'
+  | 'stableSwap__lpTokenSupply'
   | 'timestamp'
   | 'volume';
 
@@ -2250,6 +2528,8 @@ export type linea_swap_SystemInfo_filter = {
   swapCount_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<linea_swap_BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<linea_swap_SystemInfo_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<linea_swap_SystemInfo_filter>>>;
 };
 
 export type linea_swap_SystemInfo_orderBy =
@@ -2264,6 +2544,8 @@ export type linea_swap__Block_ = {
   number: Scalars['Int'];
   /** Integer representation of the timestamp stored in blocks for the chain */
   timestamp?: Maybe<Scalars['Int']>;
+  /** The hash of the parent block */
+  parentHash?: Maybe<Scalars['linea_swap_Bytes']>;
 };
 
 /** The type for the top-level _meta field */
