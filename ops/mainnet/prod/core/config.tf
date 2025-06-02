@@ -148,6 +148,11 @@ locals {
     web3SignerUrl = "https://${module.sequencer_web3signer.service_endpoint}"
     relayers = [
       {
+        type   = "Gelato",
+        apiKey = "${var.gelato_api_key}",
+        url    = "https://relay.gelato.digital"
+      },
+      {
         type   = "Connext",
         apiKey = "${var.admin_token_relayer}",
         url    = "https://${module.relayer_server.service_endpoint}"
@@ -495,6 +500,11 @@ locals {
       url = local.default_db_url
     }
     relayers = [
+      {
+        type   = "Gelato",
+        apiKey = "${var.gelato_api_key}",
+        url    = "https://relay.gelato.digital"
+      },
       {
         type   = "Connext",
         apiKey = "${var.admin_token_relayer}",
