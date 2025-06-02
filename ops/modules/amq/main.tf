@@ -2,7 +2,7 @@ resource "aws_mq_broker" "default" {
   broker_name         = "rmq-cluster-${var.environment}-${var.stage}"
   deployment_mode     = var.deployment_mode
   engine_type         = "RabbitMQ"
-  engine_version      = "3.13.7"
+  engine_version      = "3.13"
   host_instance_type  = var.host_instance_type
   publicly_accessible = var.publicly_accessible
   subnet_ids          = var.publicly_accessible ? [] : var.subnet_ids
@@ -29,7 +29,7 @@ resource "aws_mq_broker" "default" {
     password = var.rmq_mgt_password
   }
 
-  auto_minor_version_upgrade = false
+  auto_minor_version_upgrade = true
   apply_immediately          = true
 }
 
