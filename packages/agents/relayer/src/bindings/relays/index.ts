@@ -74,7 +74,7 @@ export const pollCache = async () => {
       continue;
     }
 
-    const rpcProvider = new providers.JsonRpcProvider(rpcUrl);
+    const rpcProvider = txservice.getProvider(domain);
 
     for (const task of tasksByChain[chain]) {
       // TODO: Sanity check: should have enough balance to pay for gas on the specified chain.
@@ -103,7 +103,7 @@ export const pollCache = async () => {
         // TODO: For `proveAndProcess` calls, we should be providing:
         // gas limit = expected gas cost + PROCESS_GAS + RESERVE_GAS
         // We need to read those values from on-chain IFF this is a `proveAndProcess` call.
-        const gasPrice = await rpcProvider.getGasPrice();
+        const gasPrice = await rpcProvider.getGasPrice(requestContext);
         logger.debug(`Got the gasPrice for domain: ${domain}`, requestContext, methodContext, {
           gasPrice: gasPrice.toString(),
         });
@@ -122,7 +122,7 @@ export const pollCache = async () => {
         }
 
         // Get Nonce
-        const nonce = await wallet.connect(rpcProvider).getTransactionCount();
+        const nonce = await wallet.connect(rpcProvider.leadProvider!).getTransactionCount();
 
         // Execute the calldata.
         logger.info("Sending tx", requestContext, methodContext, {
