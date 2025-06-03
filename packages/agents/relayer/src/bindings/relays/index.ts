@@ -1,4 +1,4 @@
-import { BigNumber } from "ethers";
+import { BigNumber, providers } from "ethers";
 import {
   createLoggingContext,
   createRequestContext,
