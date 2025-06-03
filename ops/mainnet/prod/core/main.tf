@@ -452,7 +452,7 @@ module "relayer" {
   container_port           = 8080
   loadbalancer_port        = 80
   cpu                      = 4096
-  memory                   = 8192
+  memory                   = 11264
   instance_count           = 1
   timeout                  = 180
   internal_lb              = false
