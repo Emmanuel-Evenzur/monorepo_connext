@@ -72,12 +72,13 @@ export const getEnvConfig = (
       configJson.web3SignerUrl ||
       configFile.web3SignerUrl,
     server: {
-      port:
+      port: +(
         process.env.RELAYER_SERVER_PORT ||
         process.env.SEQ_SERVER_PORT ||
         configJson.server?.port ||
         configFile.server?.port ||
-        8080,
+        8080
+      ),
       host:
         process.env.RELAYER_SERVER_HOST ||
         process.env.SEQ_SERVER_HOST ||
