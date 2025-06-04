@@ -460,7 +460,7 @@ module "relayer" {
   ingress_ipv6_cdir_blocks = []
   service_security_groups  = flatten([module.network.allow_all_sg, module.network.ecs_task_sg])
   cert_arn                 = var.certificate_arn
-  container_env_vars       = concat(local.relayer_env_vars, [{ name = "RELAYER_SERVICE", value = "poller" }, { name = "RELAYER_POLLER_PORT", value = "8080" }])
+  container_env_vars       = concat(local.relayer_env_vars, [{ name = "RELAYER_SERVICE", value = "poller" }, { name = "RELAYER_POLLER_PORT", value = 8080 }])
 }
 
 module "relayer_server" {
