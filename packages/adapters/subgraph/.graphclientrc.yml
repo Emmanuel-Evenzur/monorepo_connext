@@ -125,9 +125,9 @@ sources:
             }
           value: "_meta.block.number"
         sources:
-          - endpoint: "https://gateway-arbitrum.network.thegraph.com/api/{env.GRAPH_API_KEY}/subgraphs/id/5CyM1dx63qdRyBb64PX6Pf7CAZxuAVdx6gQUzCevVR8S"
-            retry: 2
-            timeout: 30000 # 30 seconds
+          # - endpoint: "https://gateway-arbitrum.network.thegraph.com/api/{env.GRAPH_API_KEY}/subgraphs/id/5CyM1dx63qdRyBb64PX6Pf7CAZxuAVdx6gQUzCevVR8S"
+          #   retry: 2
+          #   timeout: 30000 # 30 seconds
           - endpoint: https://api.goldsky.com/api/public/project_clssc64y57n5r010yeoly05up/subgraphs/connext/amarok-hub-v1-mainnet/gn
             retry: 5
             timeout: 30000 # 30 seconds
@@ -191,9 +191,9 @@ sources:
             }
           value: "_meta.block.number"
         sources:
-          - endpoint: https://gateway-arbitrum.network.thegraph.com/api/{env.GRAPH_API_KEY}/subgraphs/id/3115xfkzXPrYzbqDHTiWGtzRDYNXBxs8dyitva6J18jf
-            retry: 2
-            timeout: 30000 # 30 seconds
+          # - endpoint: https://gateway-arbitrum.network.thegraph.com/api/{env.GRAPH_API_KEY}/subgraphs/id/3115xfkzXPrYzbqDHTiWGtzRDYNXBxs8dyitva6J18jf
+          #   retry: 2
+          #   timeout: 30000 # 30 seconds
           - endpoint: https://api.goldsky.com/api/public/project_clssc64y57n5r010yeoly05up/subgraphs/connext/amarok-runtime-v1-optimism/gn
             retry: 5
             timeout: 30000 # 30 seconds
@@ -224,9 +224,9 @@ sources:
             }
           value: "_meta.block.number"
         sources:
-          - endpoint: "https://gateway-arbitrum.network.thegraph.com/api/{env.GRAPH_API_KEY}/subgraphs/id/7mDXK2K6UfkVXiJMhXU8VEFuh7qi2TwdYxeyaRjkmexo"
-            retry: 2
-            timeout: 30000 # 30 seconds
+          # - endpoint: "https://gateway-arbitrum.network.thegraph.com/api/{env.GRAPH_API_KEY}/subgraphs/id/7mDXK2K6UfkVXiJMhXU8VEFuh7qi2TwdYxeyaRjkmexo"
+          #   retry: 2
+          #   timeout: 30000 # 30 seconds
           - endpoint: https://api.goldsky.com/api/public/project_clssc64y57n5r010yeoly05up/subgraphs/connext/amarok-runtime-v1-polygon/gn
             retry: 5
             timeout: 30000 # 30 seconds
@@ -317,15 +317,15 @@ sources:
             }
           value: "_meta.block.number"
         sources:
-          - endpoint: "https://gateway-arbitrum.network.thegraph.com/api/{env.GRAPH_API_KEY}/subgraphs/id/6oJrPk9YJEU9rWU4DAizjZdALSccxe5ZahBsTtFaGksU"
-            retry: 2
-            timeout: 30000 # 30 seconds
+          # - endpoint: "https://gateway-arbitrum.network.thegraph.com/api/{env.GRAPH_API_KEY}/subgraphs/id/6oJrPk9YJEU9rWU4DAizjZdALSccxe5ZahBsTtFaGksU"
+          #   retry: 2
+          #   timeout: 30000 # 30 seconds
           # - endpoint: "https://api.thegraph.com/subgraphs/name/connext/amarok-runtime-v0-gnosis"
           #   retry: 5
           #   timeout: 30000 # 30 seconds
-          # - endpoint: "https://api.goldsky.com/api/public/project_clssc64y57n5r010yeoly05up/subgraphs/connext/amarok-runtime-v1-gnosis/gn"
-          #   retry: 5
-          #   timeout: 30000 # 30 seconds
+          - endpoint: "https://api.goldsky.com/api/public/project_clssc64y57n5r010yeoly05up/subgraphs/connext/amarok-runtime-v1-gnosis/gn"
+            retry: 5
+            timeout: 30000 # 30 seconds
     transforms:
       - prefix:
           value: xdai_
