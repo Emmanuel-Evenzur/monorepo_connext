@@ -380,7 +380,7 @@ jobs:
             type=raw,value=${{ steps.remove-router.outputs.docker_tag }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         with:
           context: .
           push: true
@@ -433,7 +433,7 @@ jobs:
             type=raw,value=${{ steps.remove-router.outputs.docker_tag }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         with:
           context: .
           push: true
@@ -486,7 +486,7 @@ jobs:
             type=raw,value=${{ steps.remove-router.outputs.docker_tag }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         with:
           context: .
           push: true
@@ -528,7 +528,7 @@ jobs:
             type=semver,pattern={{raw}}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         with:
           context: .
           push: true
@@ -570,7 +570,7 @@ jobs:
             type=semver,pattern={{raw}}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         with:
           context: .
           push: true
@@ -612,7 +612,7 @@ jobs:
             type=semver,pattern={{raw}}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         with:
           context: .
           push: true
@@ -743,7 +743,7 @@ jobs:
             type=semver,pattern={{raw}}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         with:
           context: .
           push: true
@@ -785,7 +785,7 @@ jobs:
             type=semver,pattern={{raw}}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         with:
           context: .
           push: true
@@ -838,7 +838,7 @@ jobs:
             type=raw,value=${{ steps.remove-watcher.outputs.docker_tag }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         with:
           context: .
           push: true
@@ -891,7 +891,7 @@ jobs:
             type=raw,value=${{ steps.remove-sdk-server.outputs.docker_tag }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         with:
           context: .
           push: true
