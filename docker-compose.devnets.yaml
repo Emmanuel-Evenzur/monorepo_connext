@@ -99,6 +99,6 @@ services:
 
   ipfs:
     container_name: ipfs-test
-    image: ipfs/go-ipfs:v0.4.23
+    image: ipfs/go-ipfs:v0.36.0
     ports:
       - "5001:5001"
