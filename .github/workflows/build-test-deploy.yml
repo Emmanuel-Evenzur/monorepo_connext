@@ -1110,7 +1110,7 @@ jobs:
           terraform_version: 1.5.7
 
       - name: Setup Sops
-        uses: mdgreenwald/mozilla-sops-action@v1.2.0
+        uses: mdgreenwald/mozilla-sops-action@v1.6.0
         with:
           version: "3.7.2"
 
@@ -1174,7 +1174,7 @@ jobs:
           terraform_version: 1.5.7
 
       - name: Setup Sops
-        uses: mdgreenwald/mozilla-sops-action@v1.2.0
+        uses: mdgreenwald/mozilla-sops-action@v1.6.0
         with:
           version: "3.7.2"
 
@@ -1248,7 +1248,7 @@ jobs:
           terraform_version: 1.5.7
 
       - name: Setup Sops
-        uses: mdgreenwald/mozilla-sops-action@v1.2.0
+        uses: mdgreenwald/mozilla-sops-action@v1.6.0
         with:
           version: "3.7.2"
 
@@ -1316,7 +1316,7 @@ jobs:
           terraform_version: 1.5.7
 
       - name: Setup Sops
-        uses: mdgreenwald/mozilla-sops-action@v1.2.0
+        uses: mdgreenwald/mozilla-sops-action@v1.6.0
         with:
           version: "3.7.2"
 
@@ -1384,7 +1384,7 @@ jobs:
           terraform_version: 1.5.7
 
       - name: Setup Sops
-        uses: mdgreenwald/mozilla-sops-action@v1.2.0
+        uses: mdgreenwald/mozilla-sops-action@v1.6.0
         with:
           version: "3.7.2"
 
@@ -1447,7 +1447,7 @@ jobs:
           terraform_version: 1.5.7
 
       - name: Setup Sops
-        uses: mdgreenwald/mozilla-sops-action@v1.2.0
+        uses: mdgreenwald/mozilla-sops-action@v1.6.0
         with:
           version: "3.7.2"
 
