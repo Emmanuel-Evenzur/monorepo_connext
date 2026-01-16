@@ -3341,13 +3341,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@envelop/core@npm:4.0.2":
-  version: 4.0.2
-  resolution: "@envelop/core@npm:4.0.2"
+"@envelop/core@npm:4.0.3":
+  version: 4.0.3
+  resolution: "@envelop/core@npm:4.0.3"
   dependencies:
     "@envelop/types": 4.0.1
     tslib: ^2.5.0
-  checksum: da9d3217ca76fffaa1d98c6d3616eadb11264700a7f74c4638ecd80b35ca9394d71362fb993db1e05664d0592b068ec67a1143e9055fd875dfd5c12ea047f665
+  checksum: b5bed2a0a41577a8adbbc5a3e5fff131212a216f709d4f0f6c1e6a69695674662fc88d532ae17eb71031fe372a4ce682c1e61d84a090779edd1ddfb488f3901c
   languageName: node
   linkType: hard
 
