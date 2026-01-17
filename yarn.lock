@@ -2443,7 +2443,7 @@ __metadata:
     "@connext/nxtp-utils": "workspace:*"
     "@connext/smart-contracts": "workspace:*"
     "@consensys/linea-sdk": 0.3.0
-    "@eth-optimism/sdk": 3.3.2
+    "@eth-optimism/sdk": 3.3.3
     "@graphql-codegen/cli": 3.0.0
     "@mantleio/sdk": 1.0.0
     "@sinclair/typebox": 0.25.21
@@ -2957,7 +2957,7 @@ __metadata:
     "@certusone/wormhole-sdk": 0.9.21
     "@connext/nxtp-utils": "workspace:*"
     "@consensys/linea-sdk": 0.3.0
-    "@eth-optimism/sdk": 3.3.2
+    "@eth-optimism/sdk": 3.3.3
     "@gelatonetwork/relay-context": 2.1.0
     "@mantleio/sdk": 1.0.0
     "@matterlabs/hardhat-zksync-deploy": 0.6.3
@@ -3518,9 +3518,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eth-optimism/sdk@npm:3.3.2":
-  version: 3.3.2
-  resolution: "@eth-optimism/sdk@npm:3.3.2"
+"@eth-optimism/sdk@npm:3.3.3":
+  version: 3.3.3
+  resolution: "@eth-optimism/sdk@npm:3.3.3"
   dependencies:
     "@eth-optimism/contracts": 0.6.0
     "@eth-optimism/core-utils": ^0.13.2
@@ -3530,7 +3530,7 @@ __metadata:
     semver: ^7.6.0
   peerDependencies:
     ethers: ^5
-  checksum: d24707c9540a5e9c7f4a123e7dd085ebd4cfa861ffce3fb124bd3c7c92da5d7c92ddf488582cfc3cda17bde010cfda5812c183750ae9cd0ebae913328eae47c2
+  checksum: 2119b5f7f36e06505fc3cdbed8fe2c452cac14be8cb3ebc0fdba19080ebbec0453a218bbadf66be75953a093386ccff9b8cec312f1ea8c7d03f5e8901413ba60
   languageName: node
   linkType: hard
 
