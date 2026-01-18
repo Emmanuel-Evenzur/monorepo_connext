@@ -36,7 +36,7 @@
     "@connext/smart-contracts": "workspace:*",
     "@consensys/linea-sdk": "0.3.0",
     "@eth-optimism/sdk": "3.3.2",
-    "@mantleio/sdk": "1.0.0",
+    "@mantleio/sdk": "1.0.5",
     "@sinclair/typebox": "0.25.21",
     "@types/aws-lambda": "8.10.110",
     "amqplib": "0.10.3",
