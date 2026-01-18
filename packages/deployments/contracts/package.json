@@ -59,7 +59,7 @@
     "@connext/nxtp-utils": "workspace:*",
     "@consensys/linea-sdk": "0.3.0",
     "@gelatonetwork/relay-context": "2.1.0",
-    "@mantleio/sdk": "1.0.0",
+    "@mantleio/sdk": "1.0.5",
     "@matterlabs/hardhat-zksync-deploy": "0.6.3",
     "@matterlabs/hardhat-zksync-solc": "0.3.17",
     "@matterlabs/hardhat-zksync-verify": "0.1.7",

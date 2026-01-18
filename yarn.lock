@@ -2445,7 +2445,7 @@ __metadata:
     "@consensys/linea-sdk": 0.3.0
     "@eth-optimism/sdk": 3.3.2
     "@graphql-codegen/cli": 3.0.0
-    "@mantleio/sdk": 1.0.0
+    "@mantleio/sdk": 1.0.5
     "@sinclair/typebox": 0.25.21
     "@types/amqplib": 0.10.1
     "@types/aws-lambda": 8.10.110
@@ -2959,7 +2959,7 @@ __metadata:
     "@consensys/linea-sdk": 0.3.0
     "@eth-optimism/sdk": 3.3.2
     "@gelatonetwork/relay-context": 2.1.0
-    "@mantleio/sdk": 1.0.0
+    "@mantleio/sdk": 1.0.5
     "@matterlabs/hardhat-zksync-deploy": 0.6.3
     "@matterlabs/hardhat-zksync-solc": 0.3.17
     "@matterlabs/hardhat-zksync-verify": 0.1.7
@@ -6322,9 +6322,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantleio/sdk@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@mantleio/sdk@npm:1.0.0"
+"@mantleio/sdk@npm:1.0.5":
+  version: 1.0.5
+  resolution: "@mantleio/sdk@npm:1.0.5"
   dependencies:
     "@mantleio/contracts": 0.3.0
     "@mantleio/contracts-bedrock": 0.1.0
@@ -6334,7 +6334,7 @@ __metadata:
     rlp: ^2.2.7
   peerDependencies:
     ethers: ^5
-  checksum: d71203467a7b94cd3878745a5cb59746a97a64141d998703ccacb835957c38cbf6be0d8b23c19864093303e4ea2f3db562d328d5e3f04e52bbd1c33993bf2756
+  checksum: 889e19292e16af9b534307a92ea2a76a94692c43e928d1ecbf8d262d83d16c3ebf0d4fa2c3d9b592e7269e1d8d66dd4f89e097448e8638f29604a22146d8a27b
   languageName: node
   linkType: hard
 
