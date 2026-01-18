@@ -2798,7 +2798,7 @@ __metadata:
   resolution: "@connext/nxtp-utils@workspace:packages/utils"
   dependencies:
     "@maticnetwork/maticjs": 3.8.2
-    "@maticnetwork/maticjs-web3": 1.0.4
+    "@maticnetwork/maticjs-web3": 1.0.5
     "@sinclair/typebox": 0.25.21
     "@types/chai": 4.3.4
     "@types/chai-as-promised": 7.1.5
@@ -6338,14 +6338,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@maticnetwork/maticjs-web3@npm:1.0.4":
-  version: 1.0.4
-  resolution: "@maticnetwork/maticjs-web3@npm:1.0.4"
+"@maticnetwork/maticjs-web3@npm:1.0.5":
+  version: 1.0.5
+  resolution: "@maticnetwork/maticjs-web3@npm:1.0.5"
   dependencies:
     web3: ^1.8.0
   peerDependencies:
     "@maticnetwork/maticjs": ^3.2.0
-  checksum: aec09703d05ec72c669fbe9547b55af247b9e76475c361686e6e387e2f26d4f34acfac5e916ce088712ba108331f86ffe861ba098de9edfa93f2a7a5b7f4898d
+  checksum: 951f36b2fe4acdbe6071209665ba49550a5e110813789ebf7c9b5628db968e7d921434ba19cdba0298b21c30532bea6c5c3181636768d7e1a670def81e779546
   languageName: node
   linkType: hard
 
