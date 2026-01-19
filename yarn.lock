@@ -2964,7 +2964,7 @@ __metadata:
     "@matterlabs/hardhat-zksync-solc": 0.3.17
     "@matterlabs/hardhat-zksync-verify": 0.1.7
     "@nomiclabs/hardhat-ethers": 2.2.2
-    "@nomiclabs/hardhat-etherscan": 3.1.6
+    "@nomiclabs/hardhat-etherscan": 3.1.8
     "@nomiclabs/hardhat-waffle": 2.0.5
     "@openzeppelin/contracts": 4.8.0
     "@openzeppelin/contracts-upgradeable": 4.8.0
@@ -6953,9 +6953,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nomiclabs/hardhat-etherscan@npm:3.1.6":
-  version: 3.1.6
-  resolution: "@nomiclabs/hardhat-etherscan@npm:3.1.6"
+"@nomiclabs/hardhat-etherscan@npm:3.1.8":
+  version: 3.1.8
+  resolution: "@nomiclabs/hardhat-etherscan@npm:3.1.8"
   dependencies:
     "@ethersproject/abi": ^5.1.2
     "@ethersproject/address": ^5.0.2
@@ -6969,7 +6969,7 @@ __metadata:
     undici: ^5.14.0
   peerDependencies:
     hardhat: ^2.0.4
-  checksum: 5b1fd197f567d896064c81a4a09995e5be354d008e25be092a5d740136e5b118c2b0f2162c808caec2bbe64718ca3aeb8e886cd4d8968c92800408626429bf7b
+  checksum: 13864380d104705a54668adf2fb37a87d1147a064c1d29dbc356390e7254d5c7501b9b3af9c4ec2f9d9ff642a01417d5d35970d626fe706f5f4830820ae89ecb
   languageName: node
   linkType: hard
 
