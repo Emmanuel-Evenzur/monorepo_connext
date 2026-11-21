@@ -2965,7 +2965,7 @@ __metadata:
     "@matterlabs/hardhat-zksync-verify": 0.1.7
     "@nomiclabs/hardhat-ethers": 2.2.2
     "@nomiclabs/hardhat-etherscan": 3.1.6
-    "@nomiclabs/hardhat-waffle": 2.0.5
+    "@nomiclabs/hardhat-waffle": 2.0.6
     "@openzeppelin/contracts": 4.8.0
     "@openzeppelin/contracts-upgradeable": 4.8.0
     "@openzeppelin/hardhat-upgrades": 1.17.0
@@ -6973,15 +6973,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nomiclabs/hardhat-waffle@npm:2.0.5":
-  version: 2.0.5
-  resolution: "@nomiclabs/hardhat-waffle@npm:2.0.5"
+"@nomiclabs/hardhat-waffle@npm:2.0.6":
+  version: 2.0.6
+  resolution: "@nomiclabs/hardhat-waffle@npm:2.0.6"
   peerDependencies:
     "@nomiclabs/hardhat-ethers": ^2.0.0
+    "@types/sinon-chai": ^3.2.3
     ethereum-waffle: "*"
     ethers: ^5.0.0
     hardhat: ^2.0.0
-  checksum: 6cdea876ee3babf74ef6aceb9025e287ce4da3b2c7cfeb31834d35a8fdc77e59964395b529007bdbbb84d08f0f2c397ee7f5992fcb42abab88d00e7ae1add0ea
+  checksum: e43592b135739c7f077a9d0a38a479a5512000e58f91d684e6a0d4f0894f8f826821d0b637e2cd7b646669ba12300fcb5e180bcc2473f5cc67d55f44ab809770
   languageName: node
   linkType: hard
 
